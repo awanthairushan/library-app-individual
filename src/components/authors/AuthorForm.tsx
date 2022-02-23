@@ -5,7 +5,7 @@ import {IAuthor} from '../../types/dataTypes';
 
 type AuthorFormProps = {
     onCloseClick : () => void
-    onCreateClick: () => void
+    onCreateClick: (author: IAuthor) => void
 }
 
 const AuthorForm : React.FC<AuthorFormProps> = (props) => {
@@ -20,13 +20,17 @@ const AuthorForm : React.FC<AuthorFormProps> = (props) => {
     const handleSubmit = (event: any) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
+            event.preventDefault();
+            event.stopPropagation();
         } else {
             event.preventDefault();
-            props.onCreateClick();
+            const temporyAuthor:IAuthor = {name:authorName}
+            props.onCreateClick(temporyAuthor);
+            setAuthorName("");
+            
         }
-        setValidated(true);
+        setValidated(false);
+        
     }
 
     return (
