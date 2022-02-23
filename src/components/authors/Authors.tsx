@@ -13,7 +13,7 @@ import {IAuthor} from '../../types/dataTypes';
 
 const Authors: React.FC = () => {
 
-    const [authors] = useState(authorsArray);
+    const [authors,setAuthors] = useState(authorsArray);
 
     const handleOnDeleteAuthor = (deleteIndex:number) => {
         Swal.fire({
@@ -37,7 +37,10 @@ const Authors: React.FC = () => {
         })
     }
 
-    const handleOnSubmitAuthor = () => {
+    const handleOnSubmitAuthor = (name: IAuthor) => {
+        const allAuthors: IAuthor[] = authors.slice();
+        allAuthors.push(name);
+        setAuthors(allAuthors);
         Swal.fire({
           position: 'top-end',
           icon: 'success',
