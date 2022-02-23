@@ -82,3 +82,26 @@
     }
   }
 }
+
+.author_form {
+  h2 {
+    text-decoration: underline;
+    color: #025e52;
+  }
+  label {
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+  .form_control {
+    border-width: 2px;
+    border-radius: 0;
+    border-color: #8c8c8c;
+  }
+  .x_circle {
+    cursor: pointer;
+  }
+  .create_button {
+    background-color: #01589d;
+    border-radius: 6px;
+  }
+}
