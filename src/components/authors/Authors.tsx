@@ -26,6 +26,9 @@ const Authors: React.FC = () => {
           confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
           if (result.isConfirmed) {
+            const allAuthors: IAuthor[] = authors.slice();
+            allAuthors.splice(deleteIndex, 1);
+            setAuthors(allAuthors);
             Swal.fire({
               position: 'top-end',
               icon: 'success',
