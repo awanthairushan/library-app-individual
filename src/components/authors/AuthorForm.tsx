@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {Row,Col,Form,Button} from 'react-bootstrap';
 import {XCircle} from 'react-feather';
 import {IAuthor} from '../../types/dataTypes';
@@ -6,6 +6,9 @@ import {IAuthor} from '../../types/dataTypes';
 type AuthorFormProps = {
     onCloseClick : () => void
     onCreateClick: (author: IAuthor) => void
+    updateAuthorIndex : number | null
+    updateAuthor : IAuthor | null
+    onUpdateClick : (updatedAuthor : IAuthor) => void
 }
 
 const AuthorForm : React.FC<AuthorFormProps> = (props) => {
@@ -17,6 +20,14 @@ const AuthorForm : React.FC<AuthorFormProps> = (props) => {
         setAuthorName(name);
     }
 
+    useEffect(() => {
+        if (!props.updateAuthor) {
+            return;
+        }
+        setAuthorName(props.updateAuthor.name);
+    }, [props.updateAuthor])
+
+
     const handleSubmit = (event: any) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
@@ -25,7 +36,11 @@ const AuthorForm : React.FC<AuthorFormProps> = (props) => {
         } else {
             event.preventDefault();
             const temporyAuthor:IAuthor = {name:authorName}
-            props.onCreateClick(temporyAuthor);
+            if (props.updateAuthorIndex === null) {
+                props.onCreateClick(temporyAuthor);
+            } else {
+                props.onUpdateClick(temporyAuthor);
+            }
             setAuthorName("");
             
         }
@@ -38,7 +53,7 @@ const AuthorForm : React.FC<AuthorFormProps> = (props) => {
             <Col lg={9} md={12} className="pe-4">
                 <Row className="author_form">
                     <Col xs={11} className="px-0">
-                        <h2 className="px-0 fs-3">Create Author</h2>
+                    <h2 className="px-0 fs-3">{props.updateAuthorIndex === null ? "Create" : "Update"} Author</h2>
                     </Col>
                     <Col xs={1} className="p-0 d-flex justify-content-end align-items-center">
                         <XCircle className="x_circle" onClick={props.onCloseClick}/>
@@ -59,7 +74,7 @@ const AuthorForm : React.FC<AuthorFormProps> = (props) => {
                 </Row>
                 <Row className="author_form py-4 ">
                     <Col className="pe-0 d-flex justify-content-end me-md-2">
-                    <Button variant="primary" className="px-4 py-1 fs-6 create_button" size="sm" type="submit" form="author_form">Create</Button>
+                        <Button variant="primary" className="px-4 py-1 fs-6 create_button" size="sm" type="submit" form="author_form">{props.updateAuthorIndex === null ? "Create" : "Update"}</Button>
                     </Col>
                 </Row>
             </Col>
