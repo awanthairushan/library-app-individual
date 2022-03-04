@@ -5,6 +5,7 @@ import {IAuthor} from '../../types/dataTypes';
 
     type AuthorListProps = {
         authors: IAuthor[];
+        handleOnUpdateAuthor: (updateIndex:number) => void
         handleOnDeleteAuthor: (deleteIndex:number) => void
     }
 
@@ -24,7 +25,7 @@ const AuthorList: React.FC<AuthorListProps> = (props) => {
                 <li>
                     {
                         props.authors.map( (author:IAuthor, index:number) =>
-                         <Author author={author} index={index} key = {index} onDeleteClick={props.handleOnDeleteAuthor}/>
+                         <Author author={author} index={index} key = {index} onUpdateAuthor={props.handleOnUpdateAuthor} onDeleteClick={props.handleOnDeleteAuthor}/>
                         )
                     }
                 </li>
