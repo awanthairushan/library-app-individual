@@ -7,8 +7,6 @@ import Swal from 'sweetalert2';
 import {IAuthor} from '../../types/dataTypes';
 
 const authorsArray: IAuthor[] = [
-    {name : "Awantha Irushan"},
-    {name : "Kavini Sahasra"},
 ]
 
 const Authors: React.FC = () => {
@@ -96,11 +94,11 @@ const Authors: React.FC = () => {
         <React.Fragment>
             <Row className="authors">
                 <Col className="px-0">
-                    <h1 className="border-bottom-5-dark pb-1">Authors</h1>
+                    <h1 className="pb-1">Authors</h1>
                 </Col>
             </Row>
             <Row>
-                <Col>
+                <Col className="ps-0"> 
                     <AuthorList authors={authors} handleOnUpdateAuthor={handleOnUpdateAuthor} handleOnDeleteAuthor={handleOnDeleteAuthor} />
                 </Col>
             </Row>
