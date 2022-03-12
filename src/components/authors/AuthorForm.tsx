@@ -44,7 +44,7 @@ const AuthorForm : React.FC<AuthorFormProps> = (props) => {
             setAuthorName("");
             
         }
-        setValidated(false);
+        setValidated(true);
         
     }
 
@@ -59,7 +59,7 @@ const AuthorForm : React.FC<AuthorFormProps> = (props) => {
                         <XCircle className="x_circle" onClick={props.onCloseClick}/>
                     </Col>
                 </Row>
-                <Row className="author_form pt-4 ">
+                <Row className="author_form pt-3 ">
                     <Col className="pe-0 ms-lg-4 me-md-2">
                         <Form noValidate validated={validated} className="" id="author_form"  onSubmit={handleSubmit}>
                             <Form.Group>

@@ -16,13 +16,13 @@ const AuthorList: React.FC<AuthorListProps> = (props) => {
     const renderAuthors = () => {
         if(props.authors.length === 0) {
             return (
-                <li>
-                   <label>Not available</label>
+                <li >
+                   <label className='fst-italic'>No authors listed here.</label>
                 </li>
             );
         } else {
             return (
-                <li>
+                <li className="author_list_item">
                     {
                         props.authors.map( (author:IAuthor, index:number) =>
                          <Author author={author} index={index} key = {index} onUpdateAuthor={props.handleOnUpdateAuthor} onDeleteClick={props.handleOnDeleteAuthor}/>
@@ -36,9 +36,9 @@ const AuthorList: React.FC<AuthorListProps> = (props) => {
 
 
     return (
-        <Row className = "author_list my-2">
+        <Row className = "author_list my-3">
             <Col>
-                <ul className="list-unstyled">
+                <ul className="list-unstyled mb-0">
                     {renderAuthors()}
                 </ul>
             </Col>
