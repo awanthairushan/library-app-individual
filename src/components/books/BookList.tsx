@@ -5,7 +5,7 @@ import Book from './Book'
 
 type BookListProps = {
     books: IBook[];
-    onDeleteClick: () => void
+    onDeleteClick: (deleteIndex: number) => void
 }
 
 const BookList : React.FC<BookListProps> = (props) => {

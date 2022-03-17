@@ -38,7 +38,7 @@ const Books : React.FC<BooksProps> = (props) => {
         console.log(book.authorName)
     }
 
-    const handleOnDeleteClick = () => {
+    const handleOnDeleteClick = (deleteIndex: number) => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -49,6 +49,9 @@ const Books : React.FC<BooksProps> = (props) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
+                const allBooks: IBook[] = books.slice();
+                allBooks.splice(deleteIndex, 1);
+                setBooks(allBooks);
                 Swal.fire({
                     position: 'top-start',
                     icon: 'success',
