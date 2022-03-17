@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="28968415-1b0a-4d58-9536-842a427253fa" name="Changes" comment="">
+    <list default="true" id="6cbea89b-b6ed-42a1-9be9-b129efb6a0f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/partials/_books.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/partials/_books.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authors/AuthorForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/AuthorForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authors/AuthorList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/AuthorList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authors/Authors.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/Authors.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/dataTypes.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LibraryPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LibraryPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/books/Book.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/Book.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/books/BookList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/BookList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/books/Books.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/Books.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +45,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-    <property name="ts.external.directory.path" value="E:\WEB PROJECT\React Training\library_app_individual\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="D:\WebStorm 2021.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">

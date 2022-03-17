@@ -15,6 +15,7 @@ type BooksProps = {
 const Books : React.FC<BooksProps> = (props) => {
     const [books,setBooks] = useState<IBook[]>(booksArray);
     const [isFormVisible,setIsFormVisible] = useState(false);
+    const [updateBookIndex,setUpdateBookIndex] = useState<number | null>(null);
 
     const handleOnCloseBookClick = () => {
         setIsFormVisible(false)
@@ -38,7 +39,12 @@ const Books : React.FC<BooksProps> = (props) => {
         console.log(book.authorName)
     }
 
-    const handleOnDeleteClick = () => {
+    const handleOnUpdateClick = (updateIndex: number) => {
+        // handleOnAddAuthorClick();
+        setUpdateBookIndex(updateIndex);
+        // setUpdateAuthor(authors[updateIndex]);
+    }
+    const handleOnDeleteClick = (deleteIndex: number) => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -69,7 +75,7 @@ const Books : React.FC<BooksProps> = (props) => {
             </Row>
             <Row>
                 <Col className="ps-0"> 
-                    <BookList books = {books} onDeleteClick={handleOnDeleteClick}/>
+                    <BookList books = {books} onDeleteClick={handleOnDeleteClick} onUpdateClick={handleOnDeleteClick}/>
                 </Col>
             </Row>
             <Row className="px-0">
