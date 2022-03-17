@@ -44,8 +44,7 @@ const AuthorForm : React.FC<AuthorFormProps> = (props) => {
             setAuthorName("");
             
         }
-        setValidated(true);
-        
+        setValidated(true);  
     }
 
     return (

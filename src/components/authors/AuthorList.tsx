@@ -36,7 +36,7 @@ const AuthorList: React.FC<AuthorListProps> = (props) => {
 
 
     return (
-        <Row className = "author_list my-3">
+        <Row className = "my-3">
             <Col>
                 <ul className="list-unstyled mb-0">
                     {renderAuthors()}
