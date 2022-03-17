@@ -5,90 +5,32 @@ import AuthorForm from './AuthorForm';
 import {Plus} from 'react-feather';
 import Swal from 'sweetalert2';
 import {IAuthor} from '../../types/dataTypes';
+import Author from "./Author";
+import author from "./Author";
 
-const authorsArray: IAuthor[] = [
-]
+type AuthorsProps = {
+    authors: IAuthor[];
+    handleOnUpdateAuthor: (updateIndex:number) => void
+    handleOnDeleteAuthor: (deleteIndex:number) => void
+    setUpdateAuthorIndex: (updateAuthorIndex: number | null) => void
+    handleOnSubmitAuthor: (author: IAuthor) => void
+    updateAuthorIndex : number | null
+    updateAuthor : IAuthor | null
+    handleOnUpdateAuthorClick : (updatedAuthor : IAuthor) => void
+}
 
-const Authors: React.FC = () => {
 
-    const [authors,setAuthors] = useState(authorsArray);
-    const [updateAuthorIndex,setUpdateAuthorIndex] = useState<number | null>(null);
-    const [updateAuthor,setUpdateAuthor] = useState<IAuthor | null>(null);
-
-    const handleOnDeleteAuthor = (deleteIndex:number) => {
-        Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            const allAuthors: IAuthor[] = authors.slice();
-            allAuthors.splice(deleteIndex, 1);
-            setAuthors(allAuthors);
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Author deleted successfully',
-              showConfirmButton: false,
-              timer: 1500
-            })
-          }
-        })
-    }
-
-    const handleOnSubmitAuthor = (name: IAuthor) => {
-        const allAuthors: IAuthor[] = authors.slice();
-        allAuthors.push(name);
-        setAuthors(allAuthors);
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Author added successfully',
-          showConfirmButton: false,
-          timer: 1500
-        })
-    }
-
-    const handleOnUpdateAuthor = (updateIndex: number) => {
-        handleOnAddAuthorClick();
-        setUpdateAuthorIndex(updateIndex);
-        setUpdateAuthor(authors[updateIndex]);
-    }
-
-    const handleOnUpdateAuthorClick = (updatedAuthor: IAuthor) => {
-        //console.log(updateAuthorIndex);
-        // need to add a function to add data to array
-        if (updateAuthorIndex !== null) {
-            const allAuthors: IAuthor[] = authors.slice();
-            allAuthors.splice(updateAuthorIndex,1,updatedAuthor);
-            setAuthors(allAuthors);
-        }
-
-        
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Author updated successfully',
-            showConfirmButton: false,
-            timer: 1500
-          })   
-    }
+const Authors: React.FC<AuthorsProps> = (props) => {
 
     const [isFormVisible,setIsFormVisible] = useState(false);
 
+    const handleOnAddAuthorClick = () => {
+        setIsFormVisible(true);
+        props.setUpdateAuthorIndex(null);
+    }
     const handleOnCloseAuthorClick = () => {
         setIsFormVisible(false)
     }
-
-    const handleOnAddAuthorClick = () => {
-        setIsFormVisible(true);
-        setUpdateAuthorIndex(null);
-    }
-
 
     return (
         <React.Fragment>
@@ -99,7 +41,7 @@ const Authors: React.FC = () => {
             </Row>
             <Row>
                 <Col className="ps-0"> 
-                    <AuthorList authors={authors} handleOnUpdateAuthor={handleOnUpdateAuthor} handleOnDeleteAuthor={handleOnDeleteAuthor} />
+                    <AuthorList authors={props.authors} handleOnUpdateAuthor={props.handleOnUpdateAuthor} handleOnDeleteAuthor={props.handleOnDeleteAuthor} />
                 </Col>
             </Row>
             <Row className="px-0">
@@ -110,7 +52,7 @@ const Authors: React.FC = () => {
             </Row>
             <Row className="px-0 pt-5">
                 <Col>
-                    {isFormVisible && <AuthorForm onCloseClick={handleOnCloseAuthorClick} onCreateClick={handleOnSubmitAuthor} updateAuthorIndex={updateAuthorIndex} updateAuthor={updateAuthor} onUpdateClick={handleOnUpdateAuthorClick}/>}
+                    {isFormVisible && <AuthorForm onCloseClick={handleOnCloseAuthorClick} onCreateClick={props.handleOnSubmitAuthor} updateAuthorIndex={props.updateAuthorIndex} updateAuthor={props.updateAuthor} onUpdateClick={props.handleOnUpdateAuthorClick}/>}
                 </Col>
             </Row>
         </React.Fragment>
