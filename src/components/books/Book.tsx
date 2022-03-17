@@ -6,7 +6,7 @@ import {IBook} from '../../types/dataTypes';
 type BookProps = {
     book: IBook;
     index: number;
-    onDeleteClick: () => void
+    onDeleteClick: (deleteIndex: number) => void
 }
 
 const Book: React.FC<BookProps> = (props) => {
@@ -17,7 +17,7 @@ const Book: React.FC<BookProps> = (props) => {
             </Col>
             <Col xs={3} className="d-flex justify-content-end icon_area px-0">
                 <Edit className="text-warning edit mt-1" />
-                <Trash2 className="text-danger trash2 mt-1" onClick={() => props.onDeleteClick()}/>
+                <Trash2 className="text-danger trash2 mt-1" onClick={() => props.onDeleteClick(props.index)}/>
             </Col>
         </Row>
     )
