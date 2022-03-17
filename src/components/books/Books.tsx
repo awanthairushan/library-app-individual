@@ -55,6 +55,9 @@ const Books : React.FC<BooksProps> = (props) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
+                const allBooks: IBook[] = books.slice();
+                allBooks.splice(deleteIndex, 1);
+                setBooks(allBooks);
                 Swal.fire({
                     position: 'top-start',
                     icon: 'success',
