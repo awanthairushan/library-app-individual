@@ -6,3 +6,7 @@ export interface IBook {
     isbn: string;
     authorName: string;
 }
+export interface AuthorNameOption {
+    value: string;
+    label: string;
+}
