@@ -36,7 +36,7 @@ const LibraryPage: React.FC = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-            }
+           }
         })
     }
 

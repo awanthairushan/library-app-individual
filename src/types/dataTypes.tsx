@@ -3,6 +3,6 @@ export interface IAuthor {
 }
 export interface IBook {
     name:string;
-    isbn: number;
+    isbn: string;
     authorName: string;
 }
