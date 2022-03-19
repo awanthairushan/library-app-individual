@@ -44,10 +44,9 @@ const Books : React.FC<BooksProps> = (props) => {
     }
 
     const handleOnUpdateClick = (updateIndex: number) => {
-        // handleOnAddAuthorClick();
+        handleOnAddBookClick();
         setUpdateBookIndex(updateIndex);
         setUpdateBook(books[updateIndex]);
-        // setUpdateAuthor(authors[updateIndex]);
     }
 
     const handleOnUpdateBookClick = (updatedBook: IBook) => {
