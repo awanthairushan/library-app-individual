@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="28968415-1b0a-4d58-9536-842a427253fa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/books/Book.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/Book.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books/BookList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/BookList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books/Books.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/Books.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="28968415-1b0a-4d58-9536-842a427253fa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,7 +40,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-    <property name="ts.external.directory.path" value="D:\WebStorm 2021.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="E:\WEB PROJECT\React Training\library_app_individual\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -66,6 +62,8 @@
       <workItem from="1647354132750" duration="6495000" />
       <workItem from="1647446795857" duration="2003000" />
       <workItem from="1647491945598" duration="18142000" />
+      <workItem from="1647562769985" duration="3844000" />
+      <workItem from="1647667480711" duration="3649000" />
     </task>
     <servers />
   </component>

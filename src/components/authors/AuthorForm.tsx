@@ -33,6 +33,7 @@ const AuthorForm : React.FC<AuthorFormProps> = (props) => {
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
+            setValidated(true)
         } else {
             event.preventDefault();
             const temporyAuthor:IAuthor = {name:authorName}
@@ -42,9 +43,7 @@ const AuthorForm : React.FC<AuthorFormProps> = (props) => {
                 props.onUpdateClick(temporyAuthor);
             }
             setAuthorName("");
-            
         }
-        setValidated(true);  
     }
 
     return (

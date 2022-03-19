@@ -15,6 +15,8 @@ type BooksProps = {
 const Books : React.FC<BooksProps> = (props) => {
     const [books,setBooks] = useState<IBook[]>(booksArray);
     const [isFormVisible,setIsFormVisible] = useState(false);
+    const [updateBookIndex,setUpdateBookIndex] = useState<number | null>(null);
+    const [updateBook,setUpdateBook] = useState<IBook | null>(null);
 
     const handleOnCloseBookClick = () => {
         setIsFormVisible(false)
@@ -22,12 +24,16 @@ const Books : React.FC<BooksProps> = (props) => {
 
     const handleOnAddBookClick = () => {
         setIsFormVisible(true);
+        setUpdateBookIndex(null);
     }
 
     const handleOnSubmitBookClick = (book: IBook) => {
         const allBooks: IBook[] = books.slice();
         allBooks.push(book);
         setBooks(allBooks);
+
+
+
         Swal.fire({
             position: 'top-start',
             icon: 'success',
@@ -35,7 +41,31 @@ const Books : React.FC<BooksProps> = (props) => {
             showConfirmButton: false,
             timer: 1500
         })
-        console.log(book.authorName)
+    }
+
+    const handleOnUpdateClick = (updateIndex: number) => {
+        // handleOnAddAuthorClick();
+        setUpdateBookIndex(updateIndex);
+        setUpdateBook(books[updateIndex]);
+        // setUpdateAuthor(authors[updateIndex]);
+    }
+
+    const handleOnUpdateBookClick = (updatedBook: IBook) => {
+
+
+        if (updateBookIndex !== null) {
+            const allBooks: IBook[] = books.slice();
+            allBooks.splice(updateBookIndex,1,updatedBook);
+            setBooks(allBooks);
+        }
+
+        Swal.fire({
+            position: 'top-start',
+            icon: 'success',
+            title: 'Book updated successfully',
+            showConfirmButton: false,
+            timer: 1500
+        })
     }
 
     const handleOnDeleteClick = (deleteIndex: number) => {
@@ -72,7 +102,7 @@ const Books : React.FC<BooksProps> = (props) => {
             </Row>
             <Row>
                 <Col className="ps-0"> 
-                    <BookList books = {books} onDeleteClick={handleOnDeleteClick}/>
+                    <BookList books = {books} onDeleteClick={handleOnDeleteClick} onUpdateClick={handleOnUpdateClick}/>
                 </Col>
             </Row>
             <Row className="px-0">
@@ -84,9 +114,7 @@ const Books : React.FC<BooksProps> = (props) => {
             <Row className="px-0 pt-5">
                 <Col>
 
-                    {isFormVisible && <BookForm onCloseClick={handleOnCloseBookClick} books={books}  authors = {props.authors} onCreateClick={handleOnSubmitBookClick}
-                    // updateAuthorIndex={updateAuthorIndex} updateAuthor={updateAuthor} onUpdateClick={handleOnUpdateAuthorClick}
-                    />}
+                    {isFormVisible && <BookForm onCloseClick={handleOnCloseBookClick} books={books}  authors = {props.authors} onCreateClick={handleOnSubmitBookClick} onUpdateClick={handleOnUpdateBookClick} updateBookIndex={updateBookIndex} updateBook={updateBook}/>}
                 </Col>
             </Row>
         </React.Fragment>
