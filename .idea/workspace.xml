@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="28968415-1b0a-4d58-9536-842a427253fa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authors/AuthorForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/AuthorForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books/Book.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/Book.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books/BookForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/BookForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books/Books.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/Books.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/dataTypes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/dataTypes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LibraryPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LibraryPage.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="28968415-1b0a-4d58-9536-842a427253fa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +63,7 @@
       <workItem from="1647446795857" duration="2003000" />
       <workItem from="1647491945598" duration="18142000" />
       <workItem from="1647562769985" duration="3844000" />
-      <workItem from="1647667480711" duration="3253000" />
+      <workItem from="1647667480711" duration="3649000" />
     </task>
     <servers />
   </component>
