@@ -15,6 +15,7 @@ const LibraryPage: React.FC = () => {
     const [updateAuthorIndex,setUpdateAuthorIndex] = useState<number | null>(null);
     const [updateAuthor,setUpdateAuthor] = useState<IAuthor | null>(null);
 
+
     const handleOnDeleteAuthor = (deleteIndex:number) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -54,7 +55,7 @@ const LibraryPage: React.FC = () => {
     }
 
     const handleOnUpdateAuthor = (updateIndex: number) => {
-        // handleOnAddAuthorClick();
+        handleOnAddAuthorClick();
         setUpdateAuthorIndex(updateIndex);
         setUpdateAuthor(authors[updateIndex]);
     }
@@ -76,7 +77,15 @@ const LibraryPage: React.FC = () => {
         })
     }
 
+    const [isFormVisible,setIsFormVisible] = useState<boolean>(false);
 
+    const handleOnAddAuthorClick = () => {
+        setIsFormVisible(true);
+        setUpdateAuthorIndex(null);
+    }
+    const handleOnCloseAuthorClick = () => {
+        setIsFormVisible(false)
+    }
 
     return (
         <Container fluid>
@@ -99,6 +108,9 @@ const LibraryPage: React.FC = () => {
                         updateAuthor={updateAuthor}
                         handleOnUpdateAuthorClick={handleOnUpdateAuthorClick}
                         setUpdateAuthorIndex={setUpdateAuthorIndex}
+                        handleOnAddAuthorClick={handleOnAddAuthorClick}
+                        handleOnCloseAuthorClick={handleOnCloseAuthorClick}
+                        isFormVisible={isFormVisible}
                     />
                 </Col>
             </Row>

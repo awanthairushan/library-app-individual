@@ -17,20 +17,15 @@ type AuthorsProps = {
     updateAuthorIndex : number | null
     updateAuthor : IAuthor | null
     handleOnUpdateAuthorClick : (updatedAuthor : IAuthor) => void
+    handleOnAddAuthorClick: () => void
+    handleOnCloseAuthorClick: () => void
+    isFormVisible: boolean
 }
 
 
 const Authors: React.FC<AuthorsProps> = (props) => {
 
-    const [isFormVisible,setIsFormVisible] = useState(false);
 
-    const handleOnAddAuthorClick = () => {
-        setIsFormVisible(true);
-        props.setUpdateAuthorIndex(null);
-    }
-    const handleOnCloseAuthorClick = () => {
-        setIsFormVisible(false)
-    }
 
     return (
         <React.Fragment>
@@ -46,13 +41,13 @@ const Authors: React.FC<AuthorsProps> = (props) => {
             </Row>
             <Row className="px-0">
                 <Col className="authors px-0">
-                    <Plus className="plus_icon align-top me-1" onClick={handleOnAddAuthorClick}/>
-                    <label onClick={handleOnAddAuthorClick}>Add Author</label>
+                    <Plus className="plus_icon align-top me-1" onClick={props.handleOnAddAuthorClick}/>
+                    <label onClick={props.handleOnAddAuthorClick}>Add Author</label>
                 </Col>
             </Row>
             <Row className="px-0 pt-5">
                 <Col>
-                    {isFormVisible && <AuthorForm onCloseClick={handleOnCloseAuthorClick} onCreateClick={props.handleOnSubmitAuthor} updateAuthorIndex={props.updateAuthorIndex} updateAuthor={props.updateAuthor} onUpdateClick={props.handleOnUpdateAuthorClick}/>}
+                    {props.isFormVisible && <AuthorForm onCloseClick={props.handleOnCloseAuthorClick} onCreateClick={props.handleOnSubmitAuthor} updateAuthorIndex={props.updateAuthorIndex} updateAuthor={props.updateAuthor} onUpdateClick={props.handleOnUpdateAuthorClick}/>}
                 </Col>
             </Row>
         </React.Fragment>
