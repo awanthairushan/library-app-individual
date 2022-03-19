@@ -2,8 +2,8 @@ import React,{useState,useEffect} from 'react'
 import {Row,Col,Form,Button} from 'react-bootstrap';
 import {XCircle} from 'react-feather';
 import Select from "react-select";
-import {IAuthor, IBook} from "../../types/dataTypes";
-import author from "../authors/Author";
+import {IAuthor, IBook, AuthorNameOption} from "../../types/dataTypes";
+import authors from "../authors/Authors";
 
 type BookFormProps = {
     onCloseClick : () => void
@@ -15,13 +15,19 @@ type BookFormProps = {
     updateBook:IBook | null;
 }
 
+
 const BookForm : React.FC<BookFormProps> = (props) => {
 
     const [validated,setValidated] = useState(false);
     const [bookName,setBookName] = useState<string>("");
     const [isbn,setIsbn] = useState<string>();
-    const [authorName,setAuthorName] = useState<string | null>("");
+    const [authorName,setAuthorName] = useState<AuthorNameOption | null>(null);
 
+    const authorNameOptions: AuthorNameOption[] = props.authors.map((author: IAuthor) => {
+        return(
+            {value: author.name, label:author.name}
+        )
+    })
 
     const handleOnBookNameChange = (bookName:string) => {
         setBookName(bookName);
@@ -31,9 +37,9 @@ const BookForm : React.FC<BookFormProps> = (props) => {
         setIsbn(isbn);
     }
 
-    const handleOnAuthorNameChange = (author: IAuthor | null) => {
+    const handleOnAuthorNameChange = (author: AuthorNameOption | null) => {
         if (author != null) {
-            setAuthorName(author.name);
+            setAuthorName(author);
         }
     }
 
@@ -41,12 +47,12 @@ const BookForm : React.FC<BookFormProps> = (props) => {
         if (!props.updateBook) {
             return;
         } else {
+            const updateAuthorName = {value: props.updateBook.authorName, label:props.updateBook.authorName}
             setBookName(props.updateBook.name);
             setIsbn(props.updateBook.isbn);
-            setAuthorName(props.updateBook.authorName);
+            setAuthorName(updateAuthorName);
         }
     }, [props.updateBook])
-
 
     const handleSubmit = (event: any) => {
         const form = event.currentTarget;
@@ -57,7 +63,7 @@ const BookForm : React.FC<BookFormProps> = (props) => {
         } else {
             event.preventDefault();
             if (bookName != undefined && isbn != undefined && authorName != undefined) {
-                const temporyBook: IBook = {name: bookName, isbn: isbn, authorName: authorName}
+                const temporyBook: IBook = {name: bookName, isbn: isbn, authorName: authorName.value}
                 if (props.updateBookIndex === null){
                     props.onCreateClick(temporyBook);
                 } else {
@@ -66,7 +72,7 @@ const BookForm : React.FC<BookFormProps> = (props) => {
             }
             setBookName("");
             setIsbn("");
-            setAuthorName("");
+            setAuthorName(null);
         }
     }
 
@@ -102,9 +108,10 @@ const BookForm : React.FC<BookFormProps> = (props) => {
 
                                 <Form.Label className="px-0 m-0">Author</Form.Label>
                                 <Select className="form_control px-0 m-0"
-                                    options = {props.authors}
+                                    options = {authorNameOptions}
+                                    value={authorName}
                                     isClearable={true}
-                                    onChange={(event: IAuthor | null) => handleOnAuthorNameChange(event)}
+                                    onChange={(event: AuthorNameOption | null) => {handleOnAuthorNameChange(event)}}
                                 />
                                 <Form.Control.Feedback type="invalid">
                                     Author is required.
