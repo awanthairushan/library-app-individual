@@ -3,7 +3,5 @@
 @import "partials/welcome.scss";
 @import "partials/authors.scss";
 @import "partials/books.scss";
-
-*{
-    font-family: 'Raleway', sans-serif;
-}
+@import "partials/common.scss";
+@import 'bootstrap/dist/css/bootstrap.min.css';

@@ -1,92 +1,16 @@
 import React, {useState} from 'react';
-import {Container,Col,Row} from 'react-bootstrap'
+import {Container, Col, Row} from 'react-bootstrap';
 import Welcome from '../components/welcome/Welcome';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Authors from '../components/authors/Authors'
 import Books from '../components/books/Books';
 import Footer from "../components/footer/Footer";
 import {IAuthor} from "../types/dataTypes";
-import Swal from "sweetalert2";
-
-const authorsArray: IAuthor[] = [];
 
 const LibraryPage: React.FC = () => {
 
-    const [authors,setAuthors] = useState<IAuthor[]>(authorsArray);
-    const [updateAuthorIndex,setUpdateAuthorIndex] = useState<number | null>(null);
-    const [updateAuthor,setUpdateAuthor] = useState<IAuthor | null>(null);
+    const authorsArray: IAuthor[] = [];
 
-
-    const handleOnDeleteAuthor = (deleteIndex:number) => {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const allAuthors: IAuthor[] = authors.slice();
-                allAuthors.splice(deleteIndex, 1);
-                setAuthors(allAuthors);
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Author deleted successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-           }
-        })
-    }
-
-    const handleOnSubmitAuthor = (author: IAuthor) => {
-        const allAuthors: IAuthor[] = authors.slice();
-        allAuthors.push(author);
-        setAuthors(allAuthors);
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Author added successfully',
-            showConfirmButton: false,
-            timer: 1500
-        })
-    }
-
-    const handleOnUpdateAuthor = (updateIndex: number) => {
-        handleOnAddAuthorClick();
-        setUpdateAuthorIndex(updateIndex);
-        setUpdateAuthor(authors[updateIndex]);
-    }
-
-    const handleOnUpdateAuthorClick = (updatedAuthor: IAuthor) => {
-        if (updateAuthorIndex !== null) {
-            const allAuthors: IAuthor[] = authors.slice();
-            allAuthors.splice(updateAuthorIndex,1,updatedAuthor);
-            setAuthors(allAuthors);
-        }
-
-
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Author updated successfully',
-            showConfirmButton: false,
-            timer: 1500
-        })
-    }
-
-    const [isFormVisible,setIsFormVisible] = useState<boolean>(false);
-
-    const handleOnAddAuthorClick = () => {
-        setIsFormVisible(true);
-        setUpdateAuthorIndex(null);
-    }
-    const handleOnCloseAuthorClick = () => {
-        setIsFormVisible(false)
-    }
+    const [authors, setAuthors] = useState<IAuthor[]>(authorsArray);
 
     return (
         <Container fluid className="">
@@ -96,26 +20,17 @@ const LibraryPage: React.FC = () => {
                 </Col>
             </Row>
             <Row>
-                <Col xs={{span:12,order:2}} md={{span:6,order:1}} className="px-sm-5 px-4 mb-4">
+                <Col xs={{span: 12, order: 2}} md={{span: 6, order: 1}} className="px-sm-5 px-4 mb-4">
                     <Books authors={authors}/>
                 </Col>
-                <Col xs={{span:12,order:1}} md={{span:6,order:2}} className="px-sm-5 px-4 mb-4">
+                <Col xs={{span: 12, order: 1}} md={{span: 6, order: 2}} className="px-sm-5 px-4 mb-4">
                     <Authors
                         authors={authors}
-                        handleOnUpdateAuthor={handleOnUpdateAuthor}
-                        handleOnDeleteAuthor={handleOnDeleteAuthor}
-                        handleOnSubmitAuthor={handleOnSubmitAuthor}
-                        updateAuthorIndex={updateAuthorIndex}
-                        updateAuthor={updateAuthor}
-                        handleOnUpdateAuthorClick={handleOnUpdateAuthorClick}
-                        setUpdateAuthorIndex={setUpdateAuthorIndex}
-                        handleOnAddAuthorClick={handleOnAddAuthorClick}
-                        handleOnCloseAuthorClick={handleOnCloseAuthorClick}
-                        isFormVisible={isFormVisible}
+                        setAuthors={setAuthors}
                     />
                 </Col>
             </Row>
-            <Row className="mx-0 px-0">
+            <Row className="mx-0 px-0 d-flex align-items-end">
                 <Col className="mx-0 px-0 footer">
                     <Footer/>
                 </Col>

@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28968415-1b0a-4d58-9536-842a427253fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/scss/partials/_footer.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/footer/Footer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/partials/_common.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/scss/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authors/Author.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/Author.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authors/AuthorForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/AuthorForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authors/Authors.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/Authors.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/LibraryPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LibraryPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,6 +79,8 @@
       <workItem from="1647830909725" duration="4022000" />
       <workItem from="1647835329105" duration="18000" />
       <workItem from="1647864727614" duration="834000" />
+      <workItem from="1647886353070" duration="3685000" />
+      <workItem from="1647892232072" duration="3120000" />
     </task>
     <servers />
   </component>
