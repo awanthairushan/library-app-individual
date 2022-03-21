@@ -4,6 +4,7 @@ import Welcome from '../components/welcome/Welcome';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Authors from '../components/authors/Authors'
 import Books from '../components/books/Books';
+import Footer from "../components/footer/Footer";
 import {IAuthor} from "../types/dataTypes";
 import Swal from "sweetalert2";
 
@@ -88,7 +89,7 @@ const LibraryPage: React.FC = () => {
     }
 
     return (
-        <Container fluid>
+        <Container fluid className="">
             <Row>
                 <Col>
                     <Welcome/>
@@ -112,6 +113,11 @@ const LibraryPage: React.FC = () => {
                         handleOnCloseAuthorClick={handleOnCloseAuthorClick}
                         isFormVisible={isFormVisible}
                     />
+                </Col>
+            </Row>
+            <Row className="mx-0 px-0">
+                <Col className="mx-0 px-0 footer">
+                    <Footer/>
                 </Col>
             </Row>
         </Container>

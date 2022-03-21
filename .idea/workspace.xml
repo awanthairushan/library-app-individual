@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28968415-1b0a-4d58-9536-842a427253fa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/partials/_footer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/footer/Footer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/partials/_books.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/partials/_books.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books/BookForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/BookForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LibraryPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LibraryPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +75,9 @@
       <workItem from="1647708326514" duration="30000" />
       <workItem from="1647751357837" duration="612000" />
       <workItem from="1647791282646" duration="2698000" />
-      <workItem from="1647830909725" duration="2403000" />
+      <workItem from="1647830909725" duration="4022000" />
+      <workItem from="1647835329105" duration="18000" />
+      <workItem from="1647864727614" duration="834000" />
     </task>
     <servers />
   </component>
