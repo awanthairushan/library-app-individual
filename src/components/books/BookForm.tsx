@@ -4,6 +4,7 @@ import {XCircle} from 'react-feather';
 import Select from "react-select";
 import {IAuthor, IBook, AuthorNameOption} from "../../types/dataTypes";
 import authors from "../authors/Authors";
+import {hover} from "@testing-library/user-event/dist/hover";
 
 type BookFormProps = {
     onCloseClick : () => void
@@ -53,6 +54,18 @@ const BookForm : React.FC<BookFormProps> = (props) => {
             setAuthorName(updateAuthorName);
         }
     }, [props.updateBook])
+
+    const customStyles = {
+        container: (provided: any, state: any) => ({
+            ...provided,
+            border: '2px solid #8c8c8c',
+            padding: '0',
+        }),
+        control: (provided: any, state: any) => ({
+            ...provided,
+            border: "0px",
+        }),
+    }
 
     const handleSubmit = (event: any) => {
         const form = event.currentTarget;
@@ -109,6 +122,7 @@ const BookForm : React.FC<BookFormProps> = (props) => {
                                 <Form.Label className="px-0 m-0">Author</Form.Label>
                                 <Select className="form_control px-0 m-0"
                                     options = {authorNameOptions}
+                                    styles = {customStyles}
                                     value={authorName}
                                     isClearable={true}
                                     onChange={(event: AuthorNameOption | null) => {handleOnAuthorNameChange(event)}}
