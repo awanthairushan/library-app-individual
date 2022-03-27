@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28968415-1b0a-4d58-9536-842a427253fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/scss/partials/_common.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/books/BookFormHeader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authors/Author.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/Author.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/partials/_authors.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/partials/_authors.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/partials/_books.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/partials/_books.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/authors/AuthorForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/AuthorForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authors/Authors.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/Authors.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/books/BookForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/BookFormSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/books/Books.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/Books.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/dataTypes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/dataTypes.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/LibraryPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LibraryPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +46,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Library_app" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -54,6 +56,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\WEB PROJECT\React Training\library_app_individual\src\components\books" />
       <recent name="E:\WEB PROJECT\React Training\library_app_individual\src\assets\" />
     </key>
   </component>
@@ -80,7 +83,15 @@
       <workItem from="1647835329105" duration="18000" />
       <workItem from="1647864727614" duration="834000" />
       <workItem from="1647886353070" duration="3685000" />
-      <workItem from="1647892232072" duration="3120000" />
+      <workItem from="1647892232072" duration="5241000" />
+      <workItem from="1647923597854" duration="734000" />
+      <workItem from="1647941788446" duration="81000" />
+      <workItem from="1648032045821" duration="4420000" />
+      <workItem from="1648043294514" duration="68000" />
+      <workItem from="1648092990153" duration="2000" />
+      <workItem from="1648213631420" duration="6000" />
+      <workItem from="1648273022651" duration="14000" />
+      <workItem from="1648356976747" duration="1400000" />
     </task>
     <servers />
   </component>
@@ -97,5 +108,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/books/Books.tsx</url>
+          <line>94</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/books/BookFormSection.tsx</url>
+          <line>87</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
