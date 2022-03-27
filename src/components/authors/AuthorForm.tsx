@@ -54,14 +54,14 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
                         <h2 className="px-0 fs-3">{props.updateAuthorIndex === null ? "Create" : "Update"} Author</h2>
                     </Col>
                     <Col xs={1} className="p-0 d-flex justify-content-end align-items-center">
-                        <XCircle className="x_circle" onClick={props.onCloseClick}/>
+                        <XCircle className="x_circle me-2" onClick={props.onCloseClick}/>
                     </Col>
                 </Row>
                 <Row className="author_form pt-3 ">
                     <Col className="pe-0 ms-lg-4 me-md-2">
                         <Form noValidate validated={validated} className="" id="author_form" onSubmit={handleSubmit}>
                             <Form.Group>
-                                <Form.Label className="px-0">Name of Author</Form.Label>
+                                <Form.Label className="px-0 mb-0">Name of Author</Form.Label>
                                 <Form.Control type="text" className="form_control px-0" size="sm"
                                               value={authorName}
                                               required onChange={(event: ChangeEvent<HTMLInputElement>) =>
@@ -74,8 +74,8 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
                     </Col>
                 </Row>
                 <Row className="author_form py-4 ">
-                    <Col className="pe-0 d-flex justify-content-end me-md-2">
-                        <Button variant="primary" className="px-4 py-1 fs-6 create_button"
+                    <Col className="p-0 d-flex justify-content-end me-md-2">
+                        <Button variant="primary" className="px-4 fs-6 create_button"
                                 size="sm"
                                 type="submit"
                                 form="author_form">{props.updateAuthorIndex === null ? "Create" : "Update"}
