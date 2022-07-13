@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28968415-1b0a-4d58-9536-842a427253fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/hooks.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/reducers/librarySlice.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/store.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authors/Author.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/Author.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authors/AuthorForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/AuthorForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/authors/AuthorList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/AuthorList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/authors/Authors.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/Authors.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books/BookFormSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/BookFormSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books/Books.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/Books.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/dataTypes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/dataTypes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/librarySlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/librarySlice.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/LibraryPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LibraryPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +102,8 @@
       <workItem from="1655821388228" duration="41000" />
       <workItem from="1656167859460" duration="644000" />
       <workItem from="1656422353114" duration="1266000" />
-      <workItem from="1657531117983" duration="17402000" />
+      <workItem from="1657531117983" duration="24588000" />
+      <workItem from="1657715316211" duration="3201000" />
     </task>
     <servers />
   </component>

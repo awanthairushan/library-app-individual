@@ -2,17 +2,47 @@ import React from 'react';
 import {Row, Col} from 'react-bootstrap';
 import {Edit, Trash2} from 'react-feather';
 import {IAuthor} from '../../types/dataTypes';
+import Swal, {SweetAlertResult} from "sweetalert2";
+import {deleteAuthor, updateAuthorIndex} from "../../store/reducers/librarySlice";
+import {useAppDispatch} from "../../store/hooks";
 
 type AuthorProps = {
     author: IAuthor
     index: number
-    onUpdateAuthor: (updateIndex: number) => void
-    onDeleteClick: (deleteIndex: number) => void
 }
 
 const Author: React.FC<AuthorProps> = (props) => {
 
+    const dispatch = useAppDispatch();
+
     const {author, index} = props;
+
+    const handleOnUpdateAuthorClick = (updateIndex: number) => {
+        dispatch(updateAuthorIndex(updateIndex));
+    }
+
+    const handleOnDeleteAuthorClick = (deleteIndex: number) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result: SweetAlertResult) => {
+            if (result.isConfirmed) {
+                dispatch(deleteAuthor(deleteIndex));
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Author deleted successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        })
+    }
 
     return (
         <Row className="author py-2">
@@ -20,8 +50,8 @@ const Author: React.FC<AuthorProps> = (props) => {
                 <label>{index + 1} . {author.name}</label>
             </Col>
             <Col xs={3} className="d-flex justify-content-end icon_area px-0">
-                <Edit className="text-warning edit mt-1" onClick={() => props.onUpdateAuthor(index)}/>
-                <Trash2 className="text-danger trash2 mt-1" onClick={() => props.onDeleteClick(index)}/>
+                <Edit className="text-warning edit mt-1" onClick={() => handleOnUpdateAuthorClick(index)}/>
+                <Trash2 className="text-danger trash2 mt-1" onClick={() => handleOnDeleteAuthorClick(index)}/>
             </Col>
         </Row>
     );

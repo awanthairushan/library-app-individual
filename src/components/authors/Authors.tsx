@@ -1,82 +1,28 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Row, Col} from 'react-bootstrap';
 import AuthorList from './AuthorList';
 import AuthorForm from './AuthorForm';
 import {Plus} from 'react-feather';
 import {IAuthor, UpdateAuthor} from '../../types/dataTypes';
-import Swal, {SweetAlertResult} from "sweetalert2";
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
-import {addAuthor, deleteAuthor, updateAuthor} from "../../store/reducers/librarySlice";
 
 const Authors: React.FC = () => {
 
     const authors = useAppSelector((state) => state.library.authors);
+    const updateAuthorIndexTemp = useAppSelector((state) => state.library.updateAuthorIndex);
 
     const dispatch = useAppDispatch();
 
     const [updateAuthorIndex, setUpdateAuthorIndex] = useState<number | null>(null);
     const [updateAuthorName, setUpdateAuthorName] = useState<IAuthor | null>(null);
 
-    const handleOnDeleteAuthor = (deleteIndex: number) => {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result: SweetAlertResult) => {
-            if (result.isConfirmed) {
-                dispatch(deleteAuthor(deleteIndex));
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Author deleted successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            }
-        })
-    }
-
-
-    const handleOnSubmitAuthor = (author: IAuthor) => {
-        dispatch(addAuthor(author));
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Author added successfully',
-            showConfirmButton: false,
-            timer: 1500
-        })
-    }
-
-    const handleOnUpdateAuthor = (updateIndex: number) => {
-        handleOnAddAuthorClick();
-        setUpdateAuthorIndex(updateIndex);
-        setUpdateAuthorName(authors[updateIndex]);
-    }
-
-    const handleOnUpdateAuthorClick = (author: IAuthor) => {
-        if (updateAuthorIndex !== null) {
-            const updateAuthorTempory: UpdateAuthor = {
-                author: author,
-                updateAuthorIndex: updateAuthorIndex
-            };
-            dispatch(updateAuthor(updateAuthorTempory));
-        }
-
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Author updated successfully',
-            showConfirmButton: false,
-            timer: 1500
-        })
-    }
-
     const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
+
+    useEffect(() => {
+        handleOnAddAuthorClick();
+        setUpdateAuthorIndex(updateAuthorIndexTemp);
+        setUpdateAuthorName(authors[updateAuthorIndexTemp]);
+    }, [updateAuthorIndexTemp])
 
     const handleOnAddAuthorClick = () => {
         setIsFormVisible(true);
@@ -95,8 +41,7 @@ const Authors: React.FC = () => {
             </Row>
             <Row>
                 <Col className="ps-0">
-                    <AuthorList handleOnUpdateAuthor={handleOnUpdateAuthor}
-                                handleOnDeleteAuthor={handleOnDeleteAuthor}/>
+                    <AuthorList/>
                 </Col>
             </Row>
             <Row className="px-0">
@@ -108,11 +53,10 @@ const Authors: React.FC = () => {
             <Row className="px-0 pt-5">
                 <Col>
                     {isFormVisible && <AuthorForm onCloseClick={handleOnCloseAuthorClick}
-                                                  onCreateClick={handleOnSubmitAuthor}
                                                   updateAuthorIndex={updateAuthorIndex}
                                                   updateAuthor={updateAuthorName}
-                                                  onUpdateClick={handleOnUpdateAuthorClick}
-                    />}
+                    />
+                    }
                 </Col>
             </Row>
         </React.Fragment>

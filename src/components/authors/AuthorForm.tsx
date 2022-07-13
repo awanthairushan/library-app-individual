@@ -1,17 +1,19 @@
 import React, {useState, useEffect, ChangeEvent} from 'react'
 import {Row, Col, Form, Button} from 'react-bootstrap';
 import {XCircle} from 'react-feather';
-import {IAuthor} from '../../types/dataTypes';
+import {IAuthor, UpdateAuthor} from '../../types/dataTypes';
+import {addAuthor, updateAuthor, updateAuthorIndex} from "../../store/reducers/librarySlice";
+import Swal from "sweetalert2";
+import {useAppDispatch} from "../../store/hooks";
 
 type AuthorFormProps = {
     onCloseClick: () => void
-    onCreateClick: (author: IAuthor) => void
     updateAuthorIndex: number | null
     updateAuthor: IAuthor | null
-    onUpdateClick: (updatedAuthor: IAuthor) => void
 }
 
 const AuthorForm: React.FC<AuthorFormProps> = (props) => {
+    const dispatch = useAppDispatch();
 
     const [authorName, setAuthorName] = useState<string>("");
     const [validated, setValidated] = useState(false);
@@ -38,9 +40,29 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
             event.preventDefault();
             const temporyAuthor: IAuthor = {name: authorName}
             if (props.updateAuthorIndex === null) {
-                props.onCreateClick(temporyAuthor);
+                dispatch(addAuthor(temporyAuthor));
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Author added successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             } else {
-                props.onUpdateClick(temporyAuthor);
+                // props.onUpdateClick(temporyAuthor);
+                const updateAuthorTempory: UpdateAuthor = {
+                    author: temporyAuthor,
+                    updateAuthorIndex: props.updateAuthorIndex
+                };
+                dispatch(updateAuthor(updateAuthorTempory));
+                dispatch(updateAuthorIndex(-1))
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Author updated successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
             setAuthorName("");
         }
