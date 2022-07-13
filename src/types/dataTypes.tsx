@@ -10,3 +10,8 @@ export interface IAuthorNameOption {
     value: string;
     label: string;
 }
+
+export interface UpdateAuthor {
+    author: IAuthor;
+    updateAuthorIndex: number;
+}

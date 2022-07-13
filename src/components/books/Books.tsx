@@ -6,10 +6,8 @@ import BookFormSection from "./BookFormSection";
 import {IAuthor, IBook} from '../../types/dataTypes';
 import Swal from "sweetalert2";
 
-type BooksProps = {
-    authors: IAuthor[]
-}
-const Books: React.FC<BooksProps> = (props) => {
+
+const Books: React.FC = () => {
     const booksArray: IBook[] = [];
     const [books, setBooks] = useState<IBook[]>(booksArray);
     const [isFormVisible, setIsFormVisible] = useState(false);
@@ -109,7 +107,7 @@ const Books: React.FC<BooksProps> = (props) => {
             <Col xs={12} className="mt-5">
                 {isFormVisible && <BookFormSection
                     onCloseClick={handleOnCloseBookClick}
-                    books={books} authors={props.authors}
+                    books={books}
                     onCreateClick={handleOnSubmitBookClick}
                     onUpdateClick={handleOnUpdateBookClick}
                     updateBookIndex={updateBookIndex}

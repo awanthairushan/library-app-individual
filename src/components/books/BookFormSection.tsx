@@ -3,11 +3,11 @@ import {Row, Col, Form, Button} from 'react-bootstrap';
 import Select from "react-select";
 import {IAuthor, IBook, IAuthorNameOption} from "../../types/dataTypes";
 import BookFormHeader from "./BookFormHeader";
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
 
 type BookFormProps = {
     onCloseClick: () => void
     books: IBook[];
-    authors: IAuthor[];
     onCreateClick: (book: IBook) => void
     onUpdateClick: (book: IBook) => void
     updateBookIndex: number | null;
@@ -16,12 +16,15 @@ type BookFormProps = {
 
 const BookFormSection: React.FC<BookFormProps> = (props) => {
 
+    const dispatch = useAppDispatch()
+    const authors = useAppSelector(state => state.library.authors)
+
     const [validated, setValidated] = useState(false);
     const [bookName, setBookName] = useState<string>("");
     const [isbn, setIsbn] = useState<string>();
     const [authorName, setAuthorName] = useState<IAuthorNameOption | null>(null);
 
-    const authorNameOptions: IAuthorNameOption[] = props.authors.map((author: IAuthor) => {
+    const authorNameOptions: IAuthorNameOption[] = authors.map((author: IAuthor) => {
         return (
             {value: author.name, label: author.name}
         )

@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
-import {Row,Col} from 'react-bootstrap';
+import React, {useState} from 'react';
+import {Row, Col} from 'react-bootstrap';
 import AuthorList from './AuthorList';
 import AuthorForm from './AuthorForm';
 import {Plus} from 'react-feather';
-import {IAuthor} from '../../types/dataTypes';
+import {IAuthor, UpdateAuthor} from '../../types/dataTypes';
 import Swal, {SweetAlertResult} from "sweetalert2";
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import {addAuthor, deleteAuthor, updateAuthor} from "../../store/reducers/librarySlice";
 
-type AuthorsProps = {
-    authors: IAuthor[];
-    setAuthors: (authors:IAuthor[]) => void
-}
+const Authors: React.FC = () => {
 
-const Authors: React.FC<AuthorsProps> = (props) => {
+    const authors = useAppSelector((state) => state.library.authors);
 
-    const {authors,setAuthors} = props;
+    const dispatch = useAppDispatch();
 
     const [updateAuthorIndex, setUpdateAuthorIndex] = useState<number | null>(null);
-    const [updateAuthor, setUpdateAuthor] = useState<IAuthor | null>(null);
+    const [updateAuthorName, setUpdateAuthorName] = useState<IAuthor | null>(null);
 
     const handleOnDeleteAuthor = (deleteIndex: number) => {
         Swal.fire({
@@ -27,11 +26,9 @@ const Authors: React.FC<AuthorsProps> = (props) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-        }).then((result:SweetAlertResult) => {
+        }).then((result: SweetAlertResult) => {
             if (result.isConfirmed) {
-                const allAuthors: IAuthor[] = authors.slice();
-                allAuthors.splice(deleteIndex, 1);
-                setAuthors(allAuthors);
+                dispatch(deleteAuthor(deleteIndex));
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -43,10 +40,9 @@ const Authors: React.FC<AuthorsProps> = (props) => {
         })
     }
 
+
     const handleOnSubmitAuthor = (author: IAuthor) => {
-        const allAuthors: IAuthor[] = authors.slice();
-        allAuthors.push(author);
-        setAuthors(allAuthors);
+        dispatch(addAuthor(author));
         Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -59,14 +55,16 @@ const Authors: React.FC<AuthorsProps> = (props) => {
     const handleOnUpdateAuthor = (updateIndex: number) => {
         handleOnAddAuthorClick();
         setUpdateAuthorIndex(updateIndex);
-        setUpdateAuthor(authors[updateIndex]);
+        setUpdateAuthorName(authors[updateIndex]);
     }
 
-    const handleOnUpdateAuthorClick = (updatedAuthor: IAuthor) => {
+    const handleOnUpdateAuthorClick = (author: IAuthor) => {
         if (updateAuthorIndex !== null) {
-            const allAuthors: IAuthor[] = authors.slice();
-            allAuthors.splice(updateAuthorIndex, 1, updatedAuthor);
-            setAuthors(allAuthors);
+            const updateAuthorTempory: UpdateAuthor = {
+                author: author,
+                updateAuthorIndex: updateAuthorIndex
+            };
+            dispatch(updateAuthor(updateAuthorTempory));
         }
 
         Swal.fire({
@@ -96,8 +94,9 @@ const Authors: React.FC<AuthorsProps> = (props) => {
                 </Col>
             </Row>
             <Row>
-                <Col className="ps-0"> 
-                    <AuthorList authors={authors} handleOnUpdateAuthor={handleOnUpdateAuthor} handleOnDeleteAuthor={handleOnDeleteAuthor} />
+                <Col className="ps-0">
+                    <AuthorList handleOnUpdateAuthor={handleOnUpdateAuthor}
+                                handleOnDeleteAuthor={handleOnDeleteAuthor}/>
                 </Col>
             </Row>
             <Row className="px-0">
@@ -111,7 +110,7 @@ const Authors: React.FC<AuthorsProps> = (props) => {
                     {isFormVisible && <AuthorForm onCloseClick={handleOnCloseAuthorClick}
                                                   onCreateClick={handleOnSubmitAuthor}
                                                   updateAuthorIndex={updateAuthorIndex}
-                                                  updateAuthor={updateAuthor}
+                                                  updateAuthor={updateAuthorName}
                                                   onUpdateClick={handleOnUpdateAuthorClick}
                     />}
                 </Col>

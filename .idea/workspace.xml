@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28968415-1b0a-4d58-9536-842a427253fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/books/BookFormHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/hooks.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/reducers/librarySlice.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/store.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/partials/_authors.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/partials/_authors.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/partials/_books.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/partials/_books.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authors/AuthorForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/AuthorForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/books/BookForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/BookFormSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authors/AuthorList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/AuthorList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authors/Authors.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authors/Authors.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/books/BookFormSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/BookFormSection.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/books/Books.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/books/Books.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/types/dataTypes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/dataTypes.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/LibraryPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LibraryPage.tsx" afterDir="false" />
     </list>
@@ -91,7 +95,21 @@
       <workItem from="1648092990153" duration="2000" />
       <workItem from="1648213631420" duration="6000" />
       <workItem from="1648273022651" duration="14000" />
-      <workItem from="1648356976747" duration="1400000" />
+      <workItem from="1648356976747" duration="1996000" />
+      <workItem from="1648643856156" duration="1203000" />
+      <workItem from="1648795032855" duration="700000" />
+      <workItem from="1648877973124" duration="21000" />
+      <workItem from="1653472714917" duration="2695000" />
+      <workItem from="1653630488006" duration="40000" />
+      <workItem from="1653712358176" duration="8570000" />
+      <workItem from="1654145911143" duration="2649000" />
+      <workItem from="1654514904586" duration="4156000" />
+      <workItem from="1654623301094" duration="1855000" />
+      <workItem from="1655464128218" duration="1217000" />
+      <workItem from="1655821388228" duration="41000" />
+      <workItem from="1656167859460" duration="644000" />
+      <workItem from="1656422353114" duration="1266000" />
+      <workItem from="1657531117983" duration="17402000" />
     </task>
     <servers />
   </component>
@@ -114,12 +132,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/books/Books.tsx</url>
-          <line>94</line>
+          <line>92</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/books/BookFormSection.tsx</url>
-          <line>87</line>
+          <line>90</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

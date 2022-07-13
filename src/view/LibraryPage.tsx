@@ -5,12 +5,16 @@ import Authors from '../components/authors/Authors'
 import Books from '../components/books/Books';
 import Footer from "../components/footer/Footer";
 import {IAuthor} from "../types/dataTypes";
+import {useSelector} from "react-redux";
+import {useAppSelector} from "../store/hooks";
 
 const LibraryPage: React.FC = () => {
 
-    const authorsArray: IAuthor[] = [];
-
-    const [authors, setAuthors] = useState<IAuthor[]>(authorsArray);
+    // const authorsArray: IAuthor[] = [];
+    //
+    // const [authors, setAuthors] = useState<IAuthor[]>(authorsArray);
+    //
+    // const authorss = useAppSelector((state) => state.library.authors);
 
     return (
         <Container fluid className="">
@@ -21,12 +25,10 @@ const LibraryPage: React.FC = () => {
             </Row>
             <Row>
                 <Col xs={{span: 12, order: 2}} md={{span: 6, order: 1}} className="px-sm-5 px-4 mb-4">
-                    <Books authors={authors}/>
+                    <Books/>
                 </Col>
                 <Col xs={{span: 12, order: 1}} md={{span: 6, order: 2}} className="px-sm-5 px-4 mb-4">
                     <Authors
-                        authors={authors}
-                        setAuthors={setAuthors}
                     />
                 </Col>
             </Row>

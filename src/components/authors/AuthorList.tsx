@@ -2,19 +2,21 @@ import React,{} from 'react';
 import {Row,Col} from 'react-bootstrap';
 import Author from './Author';
 import {IAuthor} from '../../types/dataTypes';
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
 
     type AuthorListProps = {
-        authors: IAuthor[];
         handleOnUpdateAuthor: (updateIndex:number) => void
         handleOnDeleteAuthor: (deleteIndex:number) => void
     }
 
 const AuthorList: React.FC<AuthorListProps> = (props) => {
 
-
+    //call store and get authors name
+    const dispatch = useAppDispatch()
+    const authors = useAppSelector(state => state.library.authors)
 
     const renderAuthors = () => {
-        if(props.authors.length === 0) {
+        if(authors.length === 0) {
             return (
                 <li >
                    <label className='fst-italic'>No authors listed here.</label>
@@ -24,7 +26,7 @@ const AuthorList: React.FC<AuthorListProps> = (props) => {
             return (
                 <li className="author_list_item">
                     {
-                        props.authors.map( (author:IAuthor, index:number) =>
+                        authors.map( (author:IAuthor, index:number) =>
                          <Author author={author} index={index} key = {index} onUpdateAuthor={props.handleOnUpdateAuthor} onDeleteClick={props.handleOnDeleteAuthor}/>
                         )
                     }
