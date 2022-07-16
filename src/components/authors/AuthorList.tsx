@@ -7,7 +7,6 @@ import {useAppDispatch, useAppSelector} from "../../store/hooks";
 const AuthorList: React.FC = () => {
 
     //call store and get authors name
-    const dispatch = useAppDispatch()
     const authors = useAppSelector(state => state.library.authors)
 
     const renderAuthors = () => {

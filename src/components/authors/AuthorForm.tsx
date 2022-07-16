@@ -2,18 +2,20 @@ import React, {useState, useEffect, ChangeEvent} from 'react'
 import {Row, Col, Form, Button} from 'react-bootstrap';
 import {XCircle} from 'react-feather';
 import {IAuthor, UpdateAuthor} from '../../types/dataTypes';
-import {addAuthor, updateAuthor, updateAuthorIndex} from "../../store/reducers/librarySlice";
+import {addAuthor, updateAuthor} from "../../store/reducers/librarySlice";
 import Swal from "sweetalert2";
-import {useAppDispatch} from "../../store/hooks";
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
 
 type AuthorFormProps = {
     onCloseClick: () => void
-    updateAuthorIndex: number | null
-    updateAuthor: IAuthor | null
 }
 
 const AuthorForm: React.FC<AuthorFormProps> = (props) => {
+
     const dispatch = useAppDispatch();
+
+    const authors = useAppSelector((state) => state.library.authors);
+    const updateAuthorIndex = useAppSelector((state) => state.library.updateAuthorIndex)
 
     const [authorName, setAuthorName] = useState<string>("");
     const [validated, setValidated] = useState(false);
@@ -23,12 +25,12 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
     }
 
     useEffect(() => {
-        if (!props.updateAuthor) {
+        if (updateAuthorIndex === -1) {
             return;
+        } else {
+            setAuthorName(authors[updateAuthorIndex].name);
         }
-        setAuthorName(props.updateAuthor.name);
-    }, [props.updateAuthor])
-
+    }, [updateAuthorIndex])
 
     const handleSubmit = (event: any) => {
         const form = event.currentTarget;
@@ -39,7 +41,7 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
         } else {
             event.preventDefault();
             const temporyAuthor: IAuthor = {name: authorName}
-            if (props.updateAuthorIndex === null) {
+            if (updateAuthorIndex === -1) {
                 dispatch(addAuthor(temporyAuthor));
                 Swal.fire({
                     position: 'top-end',
@@ -49,13 +51,11 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
                     timer: 1500
                 })
             } else {
-                // props.onUpdateClick(temporyAuthor);
                 const updateAuthorTempory: UpdateAuthor = {
                     author: temporyAuthor,
-                    updateAuthorIndex: props.updateAuthorIndex
+                    updateAuthorIndex: updateAuthorIndex
                 };
                 dispatch(updateAuthor(updateAuthorTempory));
-                dispatch(updateAuthorIndex(-1))
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -73,7 +73,7 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
             <Col lg={9} md={12} className="pe-4">
                 <Row className="author_form">
                     <Col xs={11} className="px-0">
-                        <h2 className="px-0 fs-3">{props.updateAuthorIndex === null ? "Create" : "Update"} Author</h2>
+                        <h2 className="px-0 fs-3">{updateAuthorIndex === -1 ? "Create" : "Update"} Author</h2>
                     </Col>
                     <Col xs={1} className="p-0 d-flex justify-content-end align-items-center">
                         <XCircle className="x_circle me-2" onClick={props.onCloseClick}/>
@@ -100,7 +100,7 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
                         <Button variant="primary" className="px-4 fs-6 create_button"
                                 size="sm"
                                 type="submit"
-                                form="author_form">{props.updateAuthorIndex === null ? "Create" : "Update"}
+                                form="author_form">{updateAuthorIndex === -1 ? "Create" : "Update"}
                         </Button>
                     </Col>
                 </Row>
