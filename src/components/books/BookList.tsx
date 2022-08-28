@@ -1,6 +1,6 @@
 import React from "react";
 import {Row, Col} from "react-bootstrap";
-import {IAuthor, IBook} from "../../types/dataTypes";
+import {IBook} from "../../types/dataTypes";
 import Book from './Book'
 import {useAppSelector} from "../../store/hooks";
 
@@ -17,7 +17,7 @@ const BookList: React.FC = () => {
             );
         } else {
             return (
-                <li className="booklist_item">
+                <li className="book-list_item">
                     {
                         books.map((book: IBook, index: number) =>
                             <Book book={book} index={index} key={index}/>
@@ -30,9 +30,9 @@ const BookList: React.FC = () => {
     }
 
     return (
-        <Row className="booklist my-3">
+        <Row className="book-list my-3">
             <Col>
-                <ul className="booklist_item list-unstyled mb-0 mx-0">
+                <ul className="book-list_item list-unstyled mb-0 mx-0">
                     {renderBooks()}
                 </ul>
             </Col>

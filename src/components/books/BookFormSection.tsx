@@ -5,7 +5,7 @@ import {IAuthor, IBook, IAuthorNameOption, UpdateBook} from "../../types/dataTyp
 import BookFormHeader from "./BookFormHeader";
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
 import {addBook, updateBook} from "../../store/reducers/librarySlice";
-import Swal from "sweetalert2";
+import SweetAlert from "sweetalert2";
 
 type BookFormProps = {
     onCloseClick: () => void
@@ -71,26 +71,26 @@ const BookFormSection: React.FC<BookFormProps> = (props) => {
                 const book: IBook = {name: bookName, isbn: isbn, authorName: authorName.value}
                 if (updateBookIndex === -1) {
                     dispatch(addBook(book));
-                    Swal.fire({
+                    SweetAlert.fire({
                         position: 'top-start',
                         icon: 'success',
                         title: 'Book added successfully',
                         showConfirmButton: false,
                         timer: 1500
-                    })
+                    }).then(() => {})
                 } else {
                     const updateBookTemporary: UpdateBook = {
                         book: book,
                         updateBookIndex: updateBookIndex,
                     };
                     dispatch(updateBook(updateBookTemporary));
-                    Swal.fire({
+                    SweetAlert.fire({
                         position: 'top-start',
                         icon: 'success',
                         title: 'Book updated successfully',
                         showConfirmButton: false,
                         timer: 1500
-                    })
+                    }).then(() => {})
                 }
             }
             setBookName("");

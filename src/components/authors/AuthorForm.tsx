@@ -3,7 +3,7 @@ import {Row, Col, Form, Button} from 'react-bootstrap';
 import {XCircle} from 'react-feather';
 import {IAuthor, UpdateAuthor} from '../../types/dataTypes';
 import {addAuthor, updateAuthor} from "../../store/reducers/librarySlice";
-import Swal from "sweetalert2";
+import SweetAlert from "sweetalert2";
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
 
 type AuthorFormProps = {
@@ -40,29 +40,29 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
             setValidated(true)
         } else {
             event.preventDefault();
-            const temporyAuthor: IAuthor = {name: authorName}
+            const temporaryAuthor: IAuthor = {name: authorName}
             if (updateAuthorIndex === -1) {
-                dispatch(addAuthor(temporyAuthor));
-                Swal.fire({
+                dispatch(addAuthor(temporaryAuthor));
+                SweetAlert.fire({
                     position: 'top-end',
                     icon: 'success',
                     title: 'Author added successfully',
                     showConfirmButton: false,
                     timer: 1500
-                })
+                }).then(() => {})
             } else {
-                const updateAuthorTempory: UpdateAuthor = {
-                    author: temporyAuthor,
+                const updateAuthorTemporary: UpdateAuthor = {
+                    author: temporaryAuthor,
                     updateAuthorIndex: updateAuthorIndex
                 };
-                dispatch(updateAuthor(updateAuthorTempory));
-                Swal.fire({
+                dispatch(updateAuthor(updateAuthorTemporary));
+                SweetAlert.fire({
                     position: 'top-end',
                     icon: 'success',
                     title: 'Author updated successfully',
                     showConfirmButton: false,
                     timer: 1500
-                })
+                }).then(() => {})
             }
             setAuthorName("");
         }

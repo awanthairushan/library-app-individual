@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Container, Col, Row} from 'react-bootstrap';
 import Welcome from '../components/welcome/Welcome';
 import Authors from '../components/authors/Authors'
@@ -6,9 +6,8 @@ import Books from '../components/books/Books';
 import Footer from "../components/footer/Footer";
 
 const LibraryPage: React.FC = () => {
-
     return (
-        <Container fluid className="">
+        <Container fluid>
             <Row>
                 <Col>
                     <Welcome/>

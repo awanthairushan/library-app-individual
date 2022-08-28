@@ -2,7 +2,7 @@ import React from "react";
 import {Row,Col} from 'react-bootstrap';
 import {Edit,Trash2} from 'react-feather';
 import {IBook} from '../../types/dataTypes';
-import Swal from "sweetalert2";
+import SweetAlert from "sweetalert2";
 import {deleteBook, updateBookIndex} from "../../store/reducers/librarySlice";
 import {useAppDispatch} from "../../store/hooks";
 
@@ -20,7 +20,7 @@ const Book: React.FC<BookProps> = (props) => {
     }
 
     const handleOnDeleteClick = (deleteIndex: number) => {
-        Swal.fire({
+        SweetAlert.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             icon: 'warning',
@@ -31,13 +31,13 @@ const Book: React.FC<BookProps> = (props) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 dispatch(deleteBook(deleteIndex))
-                Swal.fire({
+                SweetAlert.fire({
                     position: 'top-start',
                     icon: 'success',
                     title: 'Book deleted successfully',
                     showConfirmButton: false,
                     timer: 1500
-                })
+                }).then(() => {})
             }
         })
     }

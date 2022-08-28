@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Row, Col} from 'react-bootstrap';
 import AuthorList from './AuthorList';
 import AuthorForm from './AuthorForm';
 import {Plus} from 'react-feather';
-import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import {useAppDispatch} from "../../store/hooks";
 import {updateAuthorIndex} from "../../store/reducers/librarySlice";
 
 const Authors: React.FC = () => {

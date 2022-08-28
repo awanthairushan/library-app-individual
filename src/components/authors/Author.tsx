@@ -2,7 +2,7 @@ import React from 'react';
 import {Row, Col} from 'react-bootstrap';
 import {Edit, Trash2} from 'react-feather';
 import {IAuthor} from '../../types/dataTypes';
-import Swal, {SweetAlertResult} from "sweetalert2";
+import SweetAlert, {SweetAlertResult} from "sweetalert2";
 import {deleteAuthor, updateAuthorIndex} from "../../store/reducers/librarySlice";
 import {useAppDispatch} from "../../store/hooks";
 
@@ -22,7 +22,7 @@ const Author: React.FC<AuthorProps> = (props) => {
     }
 
     const handleOnDeleteAuthorClick = (deleteIndex: number) => {
-        Swal.fire({
+        SweetAlert.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             icon: 'warning',
@@ -33,13 +33,13 @@ const Author: React.FC<AuthorProps> = (props) => {
         }).then((result: SweetAlertResult) => {
             if (result.isConfirmed) {
                 dispatch(deleteAuthor(deleteIndex));
-                Swal.fire({
+                SweetAlert.fire({
                     position: 'top-end',
                     icon: 'success',
                     title: 'Author deleted successfully',
                     showConfirmButton: false,
                     timer: 1500
-                })
+                }).then(() => {})
             }
         })
     }

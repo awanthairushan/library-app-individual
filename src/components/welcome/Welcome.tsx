@@ -17,7 +17,7 @@ const Welcome: React.FC = () => {
           </Row>
           <Row>
             <Col className="text-end mt-2 pe-lg-5">
-               Photo by <a href="https://unsplash.com/photos/ajE5goOGzZc">Anna Hunko </a>
+               Photo by <a href="https://unsplash.com/photos/ajE5goOGzZc">Anna Hunko</a>
                on <a href="https://unsplash.com/">Unsplash</a>
             </Col>
           </Row>

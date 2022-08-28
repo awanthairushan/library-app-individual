@@ -1,15 +1,14 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IAuthor, IBook, UpdateAuthor , UpdateBook} from "../../types/dataTypes";
-import {useState} from "react";
+import {IAuthor, IBook, UpdateAuthor, UpdateBook} from "../../types/dataTypes";
 
-interface initialStateType {
+interface InitialState { //PascalCase
     authors: IAuthor[],
     updateAuthorIndex: number,
     books: IBook[],
     updateBookIndex: number,
 }
 
-const initialState: initialStateType = {
+const initialState: InitialState = {
     authors: [],
     updateAuthorIndex: -1,
     books: [],
@@ -21,8 +20,7 @@ const librarySlice = createSlice({
     initialState,
     reducers: {
         addAuthor: (state, action: PayloadAction<IAuthor>) => {
-            const newAuthors = [...state.authors, action.payload];
-            state.authors = newAuthors;
+            state.authors = [...state.authors, action.payload];
         },
         deleteAuthor: (state, action: PayloadAction<number>) => {
             const updatedAuthors: IAuthor[] = state.authors.slice();
@@ -38,8 +36,7 @@ const librarySlice = createSlice({
             state.updateAuthorIndex = action.payload;
         },
         addBook: (state, action: PayloadAction<IBook>) => {
-            const newBooks = [...state.books, action.payload];
-            state.books = newBooks;
+            state.books = [...state.books, action.payload];
         },
         deleteBook: (state, action: PayloadAction<number>) => {
             const updatedBooks: IBook[] = state.books.slice();
@@ -57,6 +54,15 @@ const librarySlice = createSlice({
     }
 });
 
-export const {addAuthor, deleteAuthor, updateAuthor, updateAuthorIndex, addBook , deleteBook, updateBook, updateBookIndex} = librarySlice.actions;
+export const {
+    addAuthor,
+    deleteAuthor,
+    updateAuthor,
+    updateAuthorIndex,
+    addBook,
+    deleteBook,
+    updateBook,
+    updateBookIndex
+} = librarySlice.actions;
 
 export default librarySlice.reducer;

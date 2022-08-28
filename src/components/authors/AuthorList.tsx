@@ -2,7 +2,7 @@ import React, {} from 'react';
 import {Row, Col} from 'react-bootstrap';
 import Author from './Author';
 import {IAuthor} from '../../types/dataTypes';
-import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import {useAppSelector} from "../../store/hooks";
 
 const AuthorList: React.FC = () => {
 
