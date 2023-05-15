@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# Library Application 1.0 - 2022
+![image](https://github.com/awanthairushan/Library_app_individual/assets/67237098/a3506fb4-f35e-4028-a551-6ecae5a8ef72)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## What is the Library Application ?
 
-## Available Scripts
+Library application is a software program designed to help users manage a library's collection of books. It is a web-based application built using the React library that provides users with a user-friendly interface to manage a library's collection of books and authors.
 
-In the project directory, you can run:
+The application is divided into three main sections: a welcome section, an authors section, and a books section. The welcome section likely serves as an entry point to the application.
 
+The authors section allows users to add new authors to the library's collection, view existing authors, and edit or delete author information as needed. The book section allows users to add new books to the library's collection, view existing books, and edit or delete book information as needed.
+
+Overall, library application provides a streamlined and intuitive interface for managing a library's collection of books and authors, which could be useful for individuals or organizations that have a need to manage and track large collections of books or other media.
+
+## Technologies and Methodologies
+
+Library application is built using several technologies and libraries. These include:
+
+- React: A popular JavaScript library for building user interfaces and applications.
+- Sass: A CSS preprocessor that provides a more efficient way of writing CSS styles.
+- TypeScript: A superset of JavaScript that adds type checking and other features to the language.
+- Bootstrap: A CSS framework that provides pre-built components and styles for creating responsive web designs.
+- Feather Icons: An open-source icon library that provides a collection of simple and elegant icons for use in web applications.
+- React Number Format: A React component for formatting input fields with numerical data.
+- SweetAlert2: A library for displaying beautiful and customizable alert messages in web applications.
+
+In addition to these technologies, this application was developed using clean code principles, which emphasize writing clean, readable, and maintainable code. And also used Agile methodology and Kanban as your development methodology, which involves breaking down the development process into smaller tasks and working on them in an iterative and incremental manner.
+
+Using these technologies and methodologies, a modern and efficient library application has been created that provides users with a user-friendly interface for managing a library's collection of books and authors.
+
+## Let's begin
+
+1. Clone on your local machine.
+
+```bash
+git clone https://github.com/awanthairushan/Library_app_individual.git
+```
+2. Navigate to the project directory.
+```bash
+cd library_app_individual
+```
+3. Install the project dependencies.
+### `npm install`
+
+4. After installing, run the application
 ### `npm start`
 
-Runs the app in the development mode.\
+5. Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Suggestions for implementing 
 
-### `npm test`
+There are several possible features and improvements that could be implemented in Library Application 2.0. Here are some suggestions:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Search functionality: Add a search bar that allows users to search for books or authors by title, author name, or other criteria.
 
-### `npm run build`
+- User authentication and roles: Implement a user authentication system that allows different levels of access based on user roles. For example, librarians could have full access to add, edit, and delete books and authors, while regular users might only be able to view the collection.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Integration with external databases: Allow users to import data from external databases like Google Books or Library of Congress to quickly add books to the collection.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Reservation and borrowing system: Implement a reservation and borrowing system that allows users to reserve books and track their borrowing history.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Social features: Add social features like user ratings, reviews, and recommendations to help users discover new books and authors.
 
-### `npm run eject`
+- Integration with e-books: Allow users to access e-books or digital versions of books directly from the app.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Analytics and reporting: Implement analytics and reporting features that allow librarians to track the usage and popularity of books, identify trends, and make informed decisions about collection management.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Overall, these features and improvements could help to make Library App 2.0 even more useful and efficient for managing a library's collection of books and authors.
