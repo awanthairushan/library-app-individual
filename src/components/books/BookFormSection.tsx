@@ -54,11 +54,7 @@ const BookFormSection: React.FC<BookFormProps> = (props) => {
 
     //adding styles to react-select
     const customStyles = {
-        container: (provided: any, state: any) => ({
-            ...provided,
-            borderRadius: '0',
-        }),
-        control: (provided: any, state: any) => ({
+        control: (provided: any) => ({
             ...provided,
             border: '2px solid #8c8c8c',
             borderRadius: '0',
@@ -67,11 +63,6 @@ const BookFormSection: React.FC<BookFormProps> = (props) => {
             paddingBottom: '5px',
             minHeight: '34px',
             height: '34px',
-        }),
-        menu: (provided: any, state: any) => ({
-            ...provided,
-            position: 'flex-box',
-            border: '1px solid #a9a9a9',
         }),
     }
 
@@ -84,12 +75,12 @@ const BookFormSection: React.FC<BookFormProps> = (props) => {
             setValidated(true);
         } else {
             event.preventDefault();
-            if (bookName != undefined && isbn != undefined && authorName != undefined) {
-                const temporyBook: IBook = {name: bookName, isbn: isbn, authorName: authorName.value}
+            if (bookName && isbn && authorName ) {
+                const temporaryBook: IBook = {name: bookName, isbn: isbn, authorName: authorName.value}
                 if (props.updateBookIndex === null) {
-                    props.onCreateClick(temporyBook);
+                    props.onCreateClick(temporaryBook);
                 } else {
-                    props.onUpdateClick(temporyBook);
+                    props.onUpdateClick(temporaryBook);
                 }
             }
             setBookName("");

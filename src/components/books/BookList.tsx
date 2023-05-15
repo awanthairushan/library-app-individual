@@ -1,6 +1,6 @@
 import React from "react";
 import { Row,Col } from "react-bootstrap";
-import {IAuthor, IBook} from "../../types/dataTypes";
+import {IBook} from "../../types/dataTypes";
 import Book from './Book'
 
 type BookListProps = {
