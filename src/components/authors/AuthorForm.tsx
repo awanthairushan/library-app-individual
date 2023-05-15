@@ -36,11 +36,11 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
             setValidated(true)
         } else {
             event.preventDefault();
-            const temporyAuthor: IAuthor = {name: authorName}
+            const temporaryAuthor: IAuthor = {name: authorName}
             if (props.updateAuthorIndex === null) {
-                props.onCreateClick(temporyAuthor);
+                props.onCreateClick(temporaryAuthor);
             } else {
-                props.onUpdateClick(temporyAuthor);
+                props.onUpdateClick(temporaryAuthor);
             }
             setAuthorName("");
         }

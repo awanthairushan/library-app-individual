@@ -64,7 +64,7 @@ const Books: React.FC<BooksProps> = (props) => {
         })
     }
 
-    //delete a book by clicking by ckicking delete icon in bookList
+    //delete a book by clicking delete icon in bookList
     const handleOnDeleteClick = (deleteIndex: number) => {
         Swal.fire({
             title: 'Are you sure?',
