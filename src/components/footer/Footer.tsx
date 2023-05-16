@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col} from 'react-bootstrap';
+import {Row} from 'react-bootstrap';
 
 const Footer: React.FC = () => {
     return (
@@ -7,9 +7,9 @@ const Footer: React.FC = () => {
             <div className='container p-4'></div>
 
             <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-                © 2020 Copyright:
+                © 2022 Copyright:
                 <a className='text-white' href='https://www.softvessel.com/training/upcoming/react-base-industrial-training-may-2021'>
-                    softvessel
+                    softVessel
                 </a>
             </div>
         </Row>
