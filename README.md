@@ -39,10 +39,14 @@ git clone https://github.com/awanthairushan/Library_app_individual.git
 cd library_app_individual
 ```
 3. Install the project dependencies.
-### `npm install`
+```bash
+npm install
+```
 
 4. After installing, run the application
-### `npm start`
+```bash
+npm start
+```
 
 5. Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
