@@ -1,4 +1,7 @@
 # Library Application 1.0 - 2022
+
+Deployed app: [https://awanthairushan.github.io/library-app-individual/](https://awanthairushan.github.io/library-app-individual/)
+
 ![image](https://github.com/awanthairushan/Library_app_individual/assets/67237098/a3506fb4-f35e-4028-a551-6ecae5a8ef72)
 
 ## What is the Library Application ?

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Col,Row,Image} from 'react-bootstrap';
-import WelcomeImage from '../../assets/images/welcome.jpg';
+import WelcomeImage from '../../assets/images/welcome.webp';
 
 const Welcome: React.FC = () => {
     return (
