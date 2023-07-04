@@ -1,4 +1,4 @@
-# Library Application 1.0 - 2022
+# Library Application 1.1.0 - 2022
 
 Deployed app: [https://awanthairushan.github.io/library-app-individual/](https://awanthairushan.github.io/library-app-individual/)
 
