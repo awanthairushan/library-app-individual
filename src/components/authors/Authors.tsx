@@ -1,24 +1,37 @@
-import React, { useState } from 'react';
-import {Row,Col} from 'react-bootstrap';
+import React, {useContext, useEffect, useState} from 'react';
+import {Row, Col} from 'react-bootstrap';
 import AuthorList from './AuthorList';
 import AuthorForm from './AuthorForm';
 import {Plus} from 'react-feather';
 import {IAuthor} from '../../types/dataTypes';
 import Swal, {SweetAlertResult} from "sweetalert2";
+import {DataContext} from "../../contexts/DataContext";
 
 type AuthorsProps = {
     authors: IAuthor[];
-    setAuthors: (authors:IAuthor[]) => void
+    setAuthors: (authors: IAuthor[]) => void
 }
 
 const Authors: React.FC<AuthorsProps> = (props) => {
 
-    const {authors,setAuthors} = props;
+    const {postData, getData, deleteData, putData} = useContext(DataContext)
 
-    const [updateAuthorIndex, setUpdateAuthorIndex] = useState<number | null>(null);
+    const [isRenderComponent, setIsRenderComponent] = useState<boolean>(false);
     const [updateAuthor, setUpdateAuthor] = useState<IAuthor | null>(null);
 
-    const handleOnDeleteAuthor = (deleteIndex: number) => {
+    useEffect(() => {
+        const connect = async () => {
+            if (getData) {
+                const response: any = await getData('/api/author');
+                if (response?.data?.data) {
+                    props.setAuthors(response?.data?.data)
+                }
+            }
+        }
+        connect();
+    }, [getData, isRenderComponent])
+
+    const handleOnDeleteAuthor = (deleteId: string) => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -27,62 +40,92 @@ const Authors: React.FC<AuthorsProps> = (props) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-        }).then((result:SweetAlertResult) => {
+        }).then(async (result: SweetAlertResult) => {
             if (result.isConfirmed) {
-                const allAuthors: IAuthor[] = authors.slice();
-                allAuthors.splice(deleteIndex, 1);
-                setAuthors(allAuthors);
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Author deleted successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+                if (deleteData) {
+                    const response: any = await deleteData('/api/author/' + deleteId);
+                    if (response?.status === 200) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: response?.data?.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setIsRenderComponent(!isRenderComponent);
+                    } else {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: response?.data?.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                }
             }
         })
     }
 
-    const handleOnSubmitAuthor = (author: IAuthor) => {
-        const allAuthors: IAuthor[] = authors.slice();
-        allAuthors.push(author);
-        setAuthors(allAuthors);
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Author added successfully',
-            showConfirmButton: false,
-            timer: 1500
-        })
-    }
-
-    const handleOnUpdateAuthor = (updateIndex: number) => {
-        handleOnAddAuthorClick();
-        setUpdateAuthorIndex(updateIndex);
-        setUpdateAuthor(authors[updateIndex]);
-    }
-
-    const handleOnUpdateAuthorClick = (updatedAuthor: IAuthor) => {
-        if (updateAuthorIndex !== null) {
-            const allAuthors: IAuthor[] = authors.slice();
-            allAuthors.splice(updateAuthorIndex, 1, updatedAuthor);
-            setAuthors(allAuthors);
+    const handleOnSubmitAuthor = async (author: IAuthor) => {
+        if (postData) {
+            const response: any = await postData('/api/author', author);
+            if (response?.status === 200) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: response?.data?.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                setIsRenderComponent(!isRenderComponent);
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: response?.data?.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
         }
+    }
 
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Author updated successfully',
-            showConfirmButton: false,
-            timer: 1500
-        })
+    const handleOnUpdateAuthor = (author: IAuthor) => {
+        handleOnAddAuthorClick();
+        setUpdateAuthor(author);
+    }
+
+    const handleOnUpdateAuthorClick = async (updatedAuthor: IAuthor) => {
+        if (putData) {
+            const response: any = await putData('/api/author/' + updatedAuthor.id, updatedAuthor);
+            if (response?.status === 200) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: response?.data?.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                setIsRenderComponent(!isRenderComponent);
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: response?.data?.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        }
+        setUpdateAuthor(null)
     }
 
     const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
 
     const handleOnAddAuthorClick = () => {
         setIsFormVisible(true);
-        setUpdateAuthorIndex(null);
+        setUpdateAuthor(null);
     }
     const handleOnCloseAuthorClick = () => {
         setIsFormVisible(false)
@@ -96,8 +139,9 @@ const Authors: React.FC<AuthorsProps> = (props) => {
                 </Col>
             </Row>
             <Row>
-                <Col className="ps-0"> 
-                    <AuthorList authors={authors} handleOnUpdateAuthor={handleOnUpdateAuthor} handleOnDeleteAuthor={handleOnDeleteAuthor} />
+                <Col className="ps-0">
+                    <AuthorList authors={props.authors} handleOnUpdateAuthor={handleOnUpdateAuthor}
+                                handleOnDeleteAuthor={handleOnDeleteAuthor}/>
                 </Col>
             </Row>
             <Row className="px-0">
@@ -110,7 +154,6 @@ const Authors: React.FC<AuthorsProps> = (props) => {
                 <Col>
                     {isFormVisible && <AuthorForm onCloseClick={handleOnCloseAuthorClick}
                                                   onCreateClick={handleOnSubmitAuthor}
-                                                  updateAuthorIndex={updateAuthorIndex}
                                                   updateAuthor={updateAuthor}
                                                   onUpdateClick={handleOnUpdateAuthorClick}
                     />}

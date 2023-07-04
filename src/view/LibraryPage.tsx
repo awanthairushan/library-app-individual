@@ -8,9 +8,7 @@ import {IAuthor} from "../types/dataTypes";
 
 const LibraryPage: React.FC = () => {
 
-    const authorsArray: IAuthor[] = [];
-
-    const [authors, setAuthors] = useState<IAuthor[]>(authorsArray);
+    const [authors, setAuthors] = useState<IAuthor[]>([]);
 
     return (
         <Container fluid className="">
