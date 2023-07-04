@@ -6,7 +6,7 @@ Backend Repository: [https://github.com/awanthairushan/library-app-backend](http
 
 ![image](https://github.com/awanthairushan/Library_app_individual/assets/67237098/a3506fb4-f35e-4028-a551-6ecae5a8ef72)
 
-## What is the Library Application ?
+## What is the Library Application?
 
 Library application is a software program designed to help users manage a library's collection of books. It is a web-based application built using the React library that provides users with a user-friendly interface to manage a library's collection of books and authors.
 
@@ -27,10 +27,20 @@ Library application is built using several technologies and libraries. These inc
 - Feather Icons: An open-source icon library that provides a collection of simple and elegant icons for use in web applications.
 - React Number Format: A React component for formatting input fields with numerical data.
 - SweetAlert2: A library for displaying beautiful and customizable alert messages in web applications.
+- React Context API: A feature of React that provides a way to share state and functionality across components without the need for prop drilling. It allows for efficient and centralized state management in the application.
+
+The application includes a backend connection implemented using the following methods:
+
+- PUT: This method is used to update existing data on the server. It enables users to modify the details of books and authors in the library collection.
+- POST: This method is used to create new data on the server. It allows users to add new books and authors to the library collection.
+- DELETE: This method is used to remove data from the server. It provides the ability to delete books and authors from the library collection.
+- GET: This method is used to retrieve data from the server. It allows users to fetch the list of books and authors from the library collection.
+
+The implementation of these backend connections enhances the functionality of the library application, enabling users to perform CRUD (Create, Read, Update, Delete) operations on the library collection.
 
 In addition to these technologies, this application was developed using clean code principles, which emphasize writing clean, readable, and maintainable code. And also used Agile methodology and Kanban as your development methodology, which involves breaking down the development process into smaller tasks and working on them in an iterative and incremental manner.
 
-Using these technologies and methodologies, a modern and efficient library application has been created that provides users with a user-friendly interface for managing a library's collection of books and authors.
+Using these technologies and methodologies, a modern and efficient library application has been created that provides users with a user-friendly interface and real-time updates for managing a library's collection of books and authors.
 
 [View NodeJS + MongoDB backend](https://github.com/awanthairushan/library-app-backend)
 
@@ -56,7 +66,7 @@ npm start
 ```
 
 5. Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3005](http://localhost:3005) to view it in the browser.
 
 ## Suggestions for implementing 
 
