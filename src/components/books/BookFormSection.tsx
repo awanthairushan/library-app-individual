@@ -17,7 +17,7 @@ const BookFormSection: React.FC<BookFormProps> = (props) => {
 
     const [validated, setValidated] = useState(false);
     const [bookName, setBookName] = useState<string>("");
-    const [isbn, setIsbn] = useState<string>();
+    const [isbn, setIsbn] = useState<string>("");
     const [authorName, setAuthorName] = useState<IAuthorNameOption | null>(null);
 
     const authorNameOptions: IAuthorNameOption[] = props.authors.map((author: IAuthor) => {
