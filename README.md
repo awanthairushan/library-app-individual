@@ -2,6 +2,8 @@
 
 Deployed app: [https://awanthairushan.github.io/library-app-individual/](https://awanthairushan.github.io/library-app-individual/)
 
+Backend Repository: [https://github.com/awanthairushan/library-app-backend](https://github.com/awanthairushan/library-app-backend)
+
 ![image](https://github.com/awanthairushan/Library_app_individual/assets/67237098/a3506fb4-f35e-4028-a551-6ecae5a8ef72)
 
 ## What is the Library Application ?
@@ -29,6 +31,8 @@ Library application is built using several technologies and libraries. These inc
 In addition to these technologies, this application was developed using clean code principles, which emphasize writing clean, readable, and maintainable code. And also used Agile methodology and Kanban as your development methodology, which involves breaking down the development process into smaller tasks and working on them in an iterative and incremental manner.
 
 Using these technologies and methodologies, a modern and efficient library application has been created that provides users with a user-friendly interface for managing a library's collection of books and authors.
+
+[View NodeJS + MongoDB backend](https://github.com/awanthairushan/library-app-backend)
 
 ## Let's begin
 

@@ -1,25 +1,40 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Row, Col} from 'react-bootstrap';
 import {Plus} from 'react-feather';
 import BookList from './BookList';
 import BookFormSection from "./BookFormSection";
 import {IAuthor, IBook} from '../../types/dataTypes';
-import Swal from "sweetalert2";
+import Swal, {SweetAlertResult} from "sweetalert2";
+import {DataContext} from "../../contexts/DataContext";
 
 type BooksProps = {
     authors: IAuthor[]
 }
 const Books: React.FC<BooksProps> = (props) => {
-    const booksArray: IBook[] = [];
-    const [books, setBooks] = useState<IBook[]>(booksArray);
+
+    const {postData, getData, deleteData, putData} = useContext(DataContext)
+
+    const [isRenderComponent, setIsRenderComponent] = useState<boolean>(false);
+    const [books, setBooks] = useState<IBook[]>([]);
     const [isFormVisible, setIsFormVisible] = useState(false);
-    const [updateBookIndex, setUpdateBookIndex] = useState<number | null>(null);
     const [updateBook, setUpdateBook] = useState<IBook | null>(null);
+
+    useEffect(() => {
+        const connect = async () => {
+            if (getData) {
+                const response: any = await getData('/api/book');
+                if (response?.data?.data) {
+                    setBooks(response?.data?.data)
+                }
+            }
+        }
+        connect();
+    }, [getData, isRenderComponent, props.authors])
 
     //open book form by clicking Add Author button
     const handleOnAddBookClick = () => {
         setIsFormVisible(true);
-        setUpdateBookIndex(null);
+        setUpdateBook(null);
     }
 
     //close book form by clicking close button
@@ -28,44 +43,64 @@ const Books: React.FC<BooksProps> = (props) => {
     }
 
     //adding a book by clicking create button
-    const handleOnSubmitBookClick = (book: IBook) => {
-        const allBooks: IBook[] = books.slice();
-        allBooks.push(book);
-        setBooks(allBooks);
-        Swal.fire({
-            position: 'top-start',
-            icon: 'success',
-            title: 'Book added successfully',
-            showConfirmButton: false,
-            timer: 1500
-        })
+    const handleOnSubmitBookClick = async (book: IBook) => {
+        if (postData) {
+            const response: any = await postData('/api/book', book);
+            if (response?.status === 200) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: response?.data?.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                setIsRenderComponent(!isRenderComponent);
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: response?.data?.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        }
     }
 
     //open book form and display book details which need to be edited by clicking edit icon in the bookList
-    const handleOnUpdateClick = (updateIndex: number) => {
+    const handleOnUpdateClick = (updateBook: IBook) => {
         handleOnAddBookClick();
-        setUpdateBookIndex(updateIndex);
-        setUpdateBook(books[updateIndex]);
+        setUpdateBook(updateBook);
     }
 
     //update the book by clicking update button
-    const handleOnUpdateBookClick = (updatedBook: IBook) => {
-        if (updateBookIndex !== null) {
-            const allBooks: IBook[] = books.slice();
-            allBooks.splice(updateBookIndex, 1, updatedBook);
-            setBooks(allBooks);
+    const handleOnUpdateBookClick = async (updatedBook: IBook) => {
+        if (putData) {
+            const response: any = await putData('/api/book/' + updatedBook.id, updatedBook);
+            if (response?.status === 200) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: response?.data?.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                setIsRenderComponent(!isRenderComponent);
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: response?.data?.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
         }
-        Swal.fire({
-            position: 'top-start',
-            icon: 'success',
-            title: 'Book updated successfully',
-            showConfirmButton: false,
-            timer: 1500
-        })
+        setUpdateBook(null)
     }
 
     //delete a book by clicking delete icon in bookList
-    const handleOnDeleteClick = (deleteIndex: number) => {
+    const handleOnDeleteClick = (deleteId: string) => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -74,18 +109,29 @@ const Books: React.FC<BooksProps> = (props) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
+        }).then(async (result: SweetAlertResult) => {
             if (result.isConfirmed) {
-                const allBooks: IBook[] = books.slice();
-                allBooks.splice(deleteIndex, 1);
-                setBooks(allBooks);
-                Swal.fire({
-                    position: 'top-start',
-                    icon: 'success',
-                    title: 'Book deleted successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+                if (deleteData) {
+                    const response: any = await deleteData('/api/book/' + deleteId);
+                    if (response?.status === 200) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: response?.data?.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setIsRenderComponent(!isRenderComponent);
+                    } else {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: response?.data?.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                }
             }
         })
     }
@@ -112,7 +158,6 @@ const Books: React.FC<BooksProps> = (props) => {
                     books={books} authors={props.authors}
                     onCreateClick={handleOnSubmitBookClick}
                     onUpdateClick={handleOnUpdateBookClick}
-                    updateBookIndex={updateBookIndex}
                     updateBook={updateBook}
                 />}
             </Col>
