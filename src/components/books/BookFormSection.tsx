@@ -10,7 +10,6 @@ type BookFormProps = {
     authors: IAuthor[];
     onCreateClick: (book: IBook) => void
     onUpdateClick: (book: IBook) => void
-    updateBookIndex: number | null;
     updateBook: IBook | null;
 }
 
@@ -23,7 +22,7 @@ const BookFormSection: React.FC<BookFormProps> = (props) => {
 
     const authorNameOptions: IAuthorNameOption[] = props.authors.map((author: IAuthor) => {
         return (
-            {value: author.name, label: author.name}
+            {value: author.id, label: author.name}
         )
     })
 
@@ -42,10 +41,8 @@ const BookFormSection: React.FC<BookFormProps> = (props) => {
     }
 
     useEffect(() => {
-        if (!props.updateBook) {
-            return;
-        } else {
-            const updateAuthorName = {value: props.updateBook.authorName, label: props.updateBook.authorName}
+        if (props.updateBook) {
+            const updateAuthorName = {value: props.updateBook.author.id, label: props.updateBook.author.name}
             setBookName(props.updateBook.name);
             setIsbn(props.updateBook.isbn);
             setAuthorName(updateAuthorName);
@@ -75,12 +72,21 @@ const BookFormSection: React.FC<BookFormProps> = (props) => {
             setValidated(true);
         } else {
             event.preventDefault();
-            if (bookName && isbn && authorName ) {
-                const temporaryBook: IBook = {name: bookName, isbn: isbn, authorName: authorName.value}
-                if (props.updateBookIndex === null) {
-                    props.onCreateClick(temporaryBook);
+            if (bookName && isbn && authorName) {
+                if (props.updateBook) {
+                    props.onUpdateClick({
+                        id: props.updateBook.id,
+                        name: bookName,
+                        isbn: isbn,
+                        author: {id: authorName.value, name: authorName.label}
+                    });
                 } else {
-                    props.onUpdateClick(temporaryBook);
+                    props.onCreateClick({
+                        id: "",
+                        name: bookName,
+                        isbn: isbn,
+                        author: {id: authorName.value, name: authorName.label}
+                    });
                 }
             }
             setBookName("");
@@ -92,7 +98,7 @@ const BookFormSection: React.FC<BookFormProps> = (props) => {
     return (
         <Row>
             <Col lg={9} md={12} className="pe-4">
-                <BookFormHeader updateBookIndex={props.updateBookIndex} onCloseClick={props.onCloseClick}/>
+                <BookFormHeader updateBook={props.updateBook} onCloseClick={props.onCloseClick}/>
             </Col>
             <Col lg={9} md={12} className="pe-4">
                 <Row className="book_form pt-3 ">
@@ -101,9 +107,9 @@ const BookFormSection: React.FC<BookFormProps> = (props) => {
                             <Form.Group>
                                 <Form.Label className="px-0 mb-0">Name of Book</Form.Label>
                                 <Form.Control type="text" className="form_control px-0" size="sm" value={bookName}
-                                    required
-                                    onChange={(event) =>
-                                        handleOnBookNameChange(event.target.value)}
+                                              required
+                                              onChange={(event) =>
+                                                  handleOnBookNameChange(event.target.value)}
                                 />
                                 <Form.Control.Feedback type="invalid">
                                     Book Name is required.
@@ -113,7 +119,7 @@ const BookFormSection: React.FC<BookFormProps> = (props) => {
                             <Form.Group>
                                 <Form.Label className="px-0 mb-0 mt-3">ISBN</Form.Label>
                                 <Form.Control type="number" className="form_control px-0" size="sm" value={isbn}
-                                    required onChange={(event) =>
+                                              required onChange={(event) =>
                                     handleOnISBNChange(event.target.value)}/>
                                 <Form.Control.Feedback type="invalid">
                                     ISBN is required.
@@ -141,7 +147,7 @@ const BookFormSection: React.FC<BookFormProps> = (props) => {
                 <Row className="book_form py-4 ">
                     <Col className="pe-0 d-flex justify-content-end me-md-2">
                         <Button variant="primary" className="px-4 fs-6 create_button" size="sm" type="submit"
-                                form="Book_form">{props.updateBookIndex === null ? "Create" : "Update"}</Button>
+                                form="Book_form">{props.updateBook ? "Update" : "Create"}</Button>
                     </Col>
                 </Row>
             </Col>

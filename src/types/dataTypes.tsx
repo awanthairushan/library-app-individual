@@ -1,12 +1,15 @@
 export interface IAuthor {
     id: string
-    name:string;
+    name: string;
 }
+
 export interface IBook {
-    name:string;
+    id: string;
+    name: string;
     isbn: string;
-    authorName: string;
+    author: IAuthor;
 }
+
 export interface IAuthorNameOption {
     value: string;
     label: string;

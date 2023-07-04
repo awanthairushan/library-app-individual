@@ -19,7 +19,6 @@ const Authors: React.FC<AuthorsProps> = (props) => {
     const [isRenderComponent, setIsRenderComponent] = useState<boolean>(false);
     const [updateAuthor, setUpdateAuthor] = useState<IAuthor | null>(null);
 
-
     useEffect(() => {
         const connect = async () => {
             if (getData) {
@@ -31,7 +30,6 @@ const Authors: React.FC<AuthorsProps> = (props) => {
     }, [getData, isRenderComponent])
 
     const handleOnDeleteAuthor = (deleteId: string) => {
-        console.log(deleteId)
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -42,7 +40,6 @@ const Authors: React.FC<AuthorsProps> = (props) => {
             confirmButtonText: 'Yes, delete it!'
         }).then(async (result: SweetAlertResult) => {
             if (result.isConfirmed) {
-                console.log("after" + deleteId)
                 if (deleteData) {
                     const response: any = await deleteData('/api/author/' + deleteId);
                     if (response?.status === 200) {
