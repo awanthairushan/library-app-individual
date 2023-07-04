@@ -6,8 +6,8 @@ import {IAuthor} from '../../types/dataTypes';
 type AuthorProps = {
     author: IAuthor
     index: number
-    onUpdateAuthor: (updateIndex: number) => void
-    onDeleteClick: (deleteIndex: number) => void
+    onUpdateAuthor: (author: IAuthor) => void
+    onDeleteClick: (deleteId: string) => void
 }
 
 const Author: React.FC<AuthorProps> = (props) => {
@@ -20,8 +20,8 @@ const Author: React.FC<AuthorProps> = (props) => {
                 <label>{index + 1} . {author.name}</label>
             </Col>
             <Col xs={3} className="d-flex justify-content-end icon_area px-0">
-                <Edit className="text-warning edit mt-1" onClick={() => props.onUpdateAuthor(index)}/>
-                <Trash2 className="text-danger trash2 mt-1" onClick={() => props.onDeleteClick(index)}/>
+                <Edit className="text-warning edit mt-1" onClick={() => props.onUpdateAuthor(author)}/>
+                <Trash2 className="text-danger trash2 mt-1" onClick={() => props.onDeleteClick(author.id)}/>
             </Col>
         </Row>
     );

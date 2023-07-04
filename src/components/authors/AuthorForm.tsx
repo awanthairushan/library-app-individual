@@ -6,7 +6,7 @@ import {IAuthor} from '../../types/dataTypes';
 type AuthorFormProps = {
     onCloseClick: () => void
     onCreateClick: (author: IAuthor) => void
-    updateAuthorIndex: number | null
+    // updateAuthorIndex: number | null
     updateAuthor: IAuthor | null
     onUpdateClick: (updatedAuthor: IAuthor) => void
 }
@@ -21,10 +21,9 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
     }
 
     useEffect(() => {
-        if (!props.updateAuthor) {
-            return;
+        if (props.updateAuthor) {
+            setAuthorName(props.updateAuthor.name);
         }
-        setAuthorName(props.updateAuthor.name);
     }, [props.updateAuthor])
 
 
@@ -36,11 +35,10 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
             setValidated(true)
         } else {
             event.preventDefault();
-            const temporaryAuthor: IAuthor = {name: authorName}
-            if (props.updateAuthorIndex === null) {
-                props.onCreateClick(temporaryAuthor);
+            if (props.updateAuthor) {
+                props.onUpdateClick({id: props.updateAuthor.id, name: authorName});
             } else {
-                props.onUpdateClick(temporaryAuthor);
+                props.onCreateClick({id: "", name: authorName});
             }
             setAuthorName("");
         }
@@ -51,7 +49,7 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
             <Col lg={9} md={12} className="pe-4">
                 <Row className="author_form">
                     <Col xs={11} className="px-0">
-                        <h2 className="px-0 fs-3">{props.updateAuthorIndex === null ? "Create" : "Update"} Author</h2>
+                        <h2 className="px-0 fs-3">{props.updateAuthor ? "Update" : "Create"} Author</h2>
                     </Col>
                     <Col xs={1} className="p-0 d-flex justify-content-end align-items-center">
                         <XCircle className="x_circle me-2" onClick={props.onCloseClick}/>
@@ -75,10 +73,11 @@ const AuthorForm: React.FC<AuthorFormProps> = (props) => {
                 </Row>
                 <Row className="author_form py-4 ">
                     <Col className="p-0 d-flex justify-content-end me-md-2">
-                        <Button variant="primary" className="px-4 fs-6 create_button"
+                        <Button variant="primary"
+                                className="px-4 fs-6 create_button"
                                 size="sm"
                                 type="submit"
-                                form="author_form">{props.updateAuthorIndex === null ? "Create" : "Update"}
+                                form="author_form">{props.updateAuthor ? "Update" : "Create"}
                         </Button>
                     </Col>
                 </Row>
