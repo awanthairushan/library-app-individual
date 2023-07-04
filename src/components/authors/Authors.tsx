@@ -23,7 +23,9 @@ const Authors: React.FC<AuthorsProps> = (props) => {
         const connect = async () => {
             if (getData) {
                 const response: any = await getData('/api/author');
-                props.setAuthors(response?.data?.data)
+                if (response?.data?.data) {
+                    props.setAuthors(response?.data?.data)
+                }
             }
         }
         connect();

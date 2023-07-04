@@ -1,6 +1,7 @@
 import React, {createContext, ReactNode} from "react";
 import axios from "axios";
 import {DataContextProps} from "../types/dataTypes";
+import Swal from "sweetalert2";
 
 export const DataContext = createContext<DataContextProps>({
     getData: (): any => {},
@@ -12,13 +13,18 @@ export const DataContext = createContext<DataContextProps>({
 export const DataProvider = ({children}: { children: ReactNode }) => {
         const getData = async (url: string) => {
             try {
-                const response = await axios.get(process.env.REACT_APP_BACKEND + url, {
+                return await axios.get(process.env.REACT_APP_BACKEND + url, {
                     withCredentials: true,
                     headers: {},
-                });
-                return response
+                })
             } catch (error) {
-                console.log(error)
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: "Connection Failed",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         };
 
@@ -34,7 +40,13 @@ export const DataProvider = ({children}: { children: ReactNode }) => {
                     }
                 );
             } catch (error) {
-                console.log(error)
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: "Connection Failed",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         };
 
@@ -50,7 +62,13 @@ export const DataProvider = ({children}: { children: ReactNode }) => {
                     }
                 );
             } catch (error) {
-                console.log(error)
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: "Connection Failed",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         };
 
@@ -65,7 +83,13 @@ export const DataProvider = ({children}: { children: ReactNode }) => {
                     }
                 );
             } catch (error) {
-                console.log(error)
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: "Connection Failed",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         };
 

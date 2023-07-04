@@ -23,7 +23,9 @@ const Books: React.FC<BooksProps> = (props) => {
         const connect = async () => {
             if (getData) {
                 const response: any = await getData('/api/book');
-                setBooks(response?.data?.data)
+                if (response?.data?.data) {
+                    setBooks(response?.data?.data)
+                }
             }
         }
         connect();
